@@ -1,4 +1,4 @@
-import { LOGIN, TOKEN, LOGOUT } from "../types/user.js";
+import { LOGIN, TOKEN, LOGOUT } from '../types/user';
 
 const initialState = {
     user: {},
