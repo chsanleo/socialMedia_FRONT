@@ -15,7 +15,7 @@ async function logout(credentials) {
 };
 async function signup(email) {
     try {
-        const res = await axios.post(`main/signup`, email);
+        const res = await axios.post(`main/register`, email);
         return res.data;
     }
     catch (error) {
