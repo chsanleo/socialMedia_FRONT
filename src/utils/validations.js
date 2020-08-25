@@ -2,7 +2,7 @@ import { utils } from './utils.js';
 
 
 export const validations = {
-    validateIdentification, validateContactUs
+    validateIdentification,validateLogin, validateContactUs
 };
 
 function validateIdentification(identification) {
