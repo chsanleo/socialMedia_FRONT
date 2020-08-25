@@ -6,7 +6,7 @@ export const contactRepository = {
 
 async function createContactUs(contactMail) {
     try {
-        const res = await axios.post(`api/contact/`, contactMail);
+        const res = await axios.post(`main/contactUs`, contactMail);
         return res.data;
     }
     catch (error) {
