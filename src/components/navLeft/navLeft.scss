@@ -1,0 +1,23 @@
+.navLeft{
+    padding-left: 2em;
+    padding-right: 2em;
+    text-align: center;
+
+    img{
+        border-radius: 50%;
+        width:70%;
+    }
+
+    .info{
+        text-align: center;
+    }
+
+    .listMenu{
+        list-style:none;
+        text-align: left;
+        li{
+            padding: 1em;
+        }
+    }
+}
+
