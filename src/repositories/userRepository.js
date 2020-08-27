@@ -1,9 +1,17 @@
 import axios from 'axios';
  
 export const userRepository = {
-    logout,signup,getProfile,updateUser,forgotPass
+    login, logout, signup, getProfile, updateUser, forgotPass
 };
-
+async function login(credentials) {
+    try {
+        const res = await axios.post(`main/login`, credentials);
+        return res.data;
+    }
+    catch (error) {
+        throw Error("Could not log in.");
+    }
+};
 async function logout(credentials) {
     try {
         const res = await axios.post(`user/logout`, credentials);

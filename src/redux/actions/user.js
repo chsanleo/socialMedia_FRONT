@@ -1,5 +1,5 @@
 import { LOGIN, TOKEN, LOGOUT } from "../types/user.js";
-import store from '../store';
+import store from '../store.js';
 
 export const loginAction = async (loggedUser) => {
     try {

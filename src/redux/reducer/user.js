@@ -1,4 +1,4 @@
-import { LOGIN, TOKEN, LOGOUT } from '../types/user';
+import { LOGIN, TOKEN, LOGOUT } from '../types/user.js';
 
 const initialState = {
     user: {},
@@ -26,4 +26,4 @@ export default function reducer(state = initialState, action) {
         default:
             return state;
     }
-}
+};
