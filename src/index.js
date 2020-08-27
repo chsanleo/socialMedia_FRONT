@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
-import './config/axios';
+
 import App from './App';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from './redux/store.js';
 import * as serviceWorker from './serviceWorker';
+import './config/axios.js';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+
+  <Provider store={store}>
+    <React.StrictMode>
       <App />
-    </Provider>,
-  </React.StrictMode>,
+    </React.StrictMode>
+  </Provider>,
 
   document.getElementById('root')
 );
