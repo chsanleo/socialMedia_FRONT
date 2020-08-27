@@ -37,7 +37,7 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="centerInfo">
                 <form onSubmit={this.pressRegister}>
                     <h3>Do you want join us?</h3>
                     <span className="errorText">{this.state.msgError}</span>
