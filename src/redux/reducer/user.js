@@ -1,4 +1,4 @@
-import { LOGIN, TOKEN, LOGOUT } from '../types/user.js';
+import { LOGIN, TOKEN, LOGOUT, UPDATE_USER } from '../types/user.js';
 
 const initialState = {
     user: {},
@@ -8,6 +8,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN:
+        case UPDATE_USER:
             return {
                 ...state,
                 user: action.payload

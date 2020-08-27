@@ -77,7 +77,7 @@ class Profile extends React.Component {
             userService.update(user);
             setTimeout(() => {
                 this.props.history.push('/init');
-            }, 2000);
+            }, 1000);
 
         } catch (error) {
             console.log(error);

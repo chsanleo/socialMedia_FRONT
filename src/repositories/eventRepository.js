@@ -1,14 +1,18 @@
 import axios from 'axios';
+import { utils } from '../utils/utils';
 
 export const eventRepository = {
     getAllEvents, createEvent
 };
 
 async function getAllEvents() {
-    let token = localStorage.getItem('authToken');
+    let token  = localStorage.getItem('authToken');
+    if(!utils.isNullOrEmpty(token)){ axios.defaults.headers.authorization = token }
+    else{token ="no hay";}
+
     console.log(token);
     try {
-        const res = await axios.get(`event/events`, /*{
+        const res = await axios.post(`event/events`/*, {
             headers: { 'authorization': token }
         }*/);
         return res.data;
