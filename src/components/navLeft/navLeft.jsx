@@ -37,7 +37,7 @@ class NavLeft extends React.Component {
 
                     <ul className="listMenu">
                         <li><NavLink exact to="/init">Go to my Events List</NavLink></li>
-                        <li><Link to="/logOut" className="accesos">Logout</Link></li>
+                        <li><Link to="/logOut">Logout</Link></li>
                     </ul>
 
                 </div>

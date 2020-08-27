@@ -35,9 +35,10 @@ class Login extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="centerInfo">
                 <form onSubmit={this.pressRecover}>
-                    <h2>Did u forgot ur password? </h2>
+                    <h2>Did u forgot ur password? </h2><br/><br/>
+                    <p>Use your email to recover it.</p>
                     <span className="errorText">{this.state.msgError}</span>
                     <input className="inputs" type="text" placeholder="Email" name="email"
                         value={this.state.password} onChange={this.handleChange}></input><br />

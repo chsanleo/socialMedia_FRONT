@@ -2,7 +2,7 @@ import { userRepository } from '../repositories/userRepository.js';
 import { logoutAction, loginAction } from '../redux/actions/user.js';
 
 export const userService = {
-    signup, login, getProfile, logout, forgotPass, 
+    signup, login, getProfile, logout, forgotPass
 };
 
 function signup(email) {
@@ -17,23 +17,25 @@ function login(credentials) {
             localStorage.setItem('authToken', res.token);
             loginAction(res);
         })
-        .catch(error => {throw new Error(error);});
+        .catch(error => { });
 };
 
-function getProfile(userId){
-    let user ={ userId: userId };
-    
+function getProfile(userId) {
+    let user = { userId: userId };
+
     userRepository.getProfile(user)
-    .then(res => {
-        return res;
-    })
-    .catch(error => console.log(error));
+        .then(res => {
+            return res;
+        })
+        .catch(error => console.log(error));
 };
 
 function logout() {
     localStorage.clear();
     logoutAction();
-    userRepository.logout();
+    /*userRepository.logout()
+        .then()
+        .catch(error => { });*/
 };
 
 function forgotPass(identification) {
