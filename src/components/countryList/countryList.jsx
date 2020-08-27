@@ -12,7 +12,7 @@ class CountryList extends React.Component {
                 e => this.props.setCountry( e.target.value )}>
                 {this.props.countries?.map(country => (
                     <option key={country.id}
-                        value={country.id}
+                        value={country.name}
                     >
                         {country.code + " " + country.name}
                     </option>
