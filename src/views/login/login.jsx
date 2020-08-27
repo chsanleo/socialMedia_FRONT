@@ -19,7 +19,7 @@ class Login extends React.Component {
     handleChange = (ev) => {
         this.setState({ [ev.target.name]: ev.target.type === 'string' ? +ev.target.value : ev.target.value });
     }
-    
+
     pressLogin = (ev) => {
         ev.preventDefault();
 
@@ -47,19 +47,23 @@ class Login extends React.Component {
     }
     render() {
         return (
-            <div className="centerInfo">
-                <form onSubmit={this.pressLogin}>
-                    <h2>Login</h2>
-                    <span className="errorText">{this.state.msgError}</span>
-                    <input className="inputs" type="text" placeholder="Email" name="email"
-                        value={this.state.numExpedient} onChange={this.handleChange}></input>
-                    <input className="inputs" type="password" placeholder="Password" name="password"
-                        value={this.state.password} onChange={this.handleChange}></input><br />
-                    <NavLink to="/forgotPass">I forgot my password</NavLink>
-                    <br />
-                    <button type="submit">LogIn!</button>
-                </form>
+            <div>
+                <div className="centerInfo">
+                    <form onSubmit={this.pressLogin}>
+                        <h2>Login</h2>
+                        <span className="errorText">{this.state.msgError}</span>
+                        <input className="inputs" type="text" placeholder="Email" name="email"
+                            value={this.state.numExpedient} onChange={this.handleChange}></input>
+                        <input className="inputs" type="password" placeholder="Password" name="password"
+                            value={this.state.password} onChange={this.handleChange}></input><br />
+                        <NavLink to="/forgotPass">I forgot my password</NavLink>
+                        <br />
+                        <button type="submit">LogIn!</button>
+                    </form>
+                </div>
+                <img align="center" src="./fondo.png" alt="fondo"/>
             </div>
+
         )
     }
 }
