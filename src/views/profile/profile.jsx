@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CountryList from '../../components/countryList/countryList.jsx';
-
-import PROPERTIES from '../../config/properties.js';
+import TypesList  from '../../components/typesList/typesList.jsx';
 import { userService } from '../../services/userService.js';
 import { validations } from '../../utils/validations.js';
 import { utils } from '../../utils/utils.js';
@@ -49,9 +48,11 @@ class Profile extends React.Component {
     setCountry = (country) => {
         this.setState({ country: country });
     }
+    setHobby = (hobby) => {
+        this.setState({ hobbies: hobby });
+    }
     pressUpdate = (ev) => {
         ev.preventDefault();
-console.log(PROPERTIES.Types)
         let user = {
             id: this.state.id,
             username: this.state.username,
@@ -104,12 +105,11 @@ console.log(PROPERTIES.Types)
                     <p><label>City</label>&nbsp;
                     <input type="text" name="city" value={this.state.city || ''}
                         onChange={this.handleChange}></input><br /></p>
-                    <p><label>Hobbies</label>&nbsp;
-                    <input type="text" name="hobbies" value={this.state.hobbies || ''}
-                        onChange={this.handleChange}></input><br /></p>
-                    <p><label>Job</label>&nbsp;
+                        <p><label>Job</label>&nbsp;
                     <input type="text" name="job" value={this.state.job || ''}
                         onChange={this.handleChange}></input><br /></p>
+                    <p><label>Hobbies: </label> {this.props.user.hobbies};<br />
+                    <TypesList setHobby={this.setHobby} readOnly /></p>
                     <p><label>Country: </label> {this.props.user.country}<br />
                     <CountryList setCountry={this.setCountry} readOnly /></p>
                     <br />
