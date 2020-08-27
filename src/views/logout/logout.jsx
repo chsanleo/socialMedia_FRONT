@@ -19,9 +19,7 @@ class LogOut extends React.Component {
     }
     render() {
         if (this.state.redirect) {
-            return (
-                <Redirect to={'/'} />
-            )
+            return ( <Redirect to={'/'} /> );
         }
         return (
             <h3 align="center">Thanks for use our application!! We gonna miss you!</h3>
