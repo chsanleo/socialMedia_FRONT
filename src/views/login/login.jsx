@@ -5,6 +5,8 @@ import { userService } from '../../services/userService.js';
 import { validations } from '../../utils/validations.js';
 import { utils } from '../../utils/utils.js';
 
+import './login.scss';
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -19,7 +21,11 @@ class Login extends React.Component {
     handleChange = (ev) => {
         this.setState({ [ev.target.name]: ev.target.type === 'string' ? +ev.target.value : ev.target.value });
     }
-
+    /*
+    componentDidCatch(error,errorInfo){
+        this.setState({ msgError: errorInfo });
+    }*/
+    
     pressLogin = (ev) => {
         ev.preventDefault();
 
@@ -36,22 +42,22 @@ class Login extends React.Component {
 
         try {
             userService.login(credentials);
+
             setTimeout(() => {
                 this.props.history.push('/init');
-            }, 500);
+            }, 1000);
 
         } catch (error) {
-            console.log(error);
-            return;
+            this.setState({ msgError: "Credenciales incorrectas" });
         }
     }
     render() {
         return (
-            <div>
+            <div className="loginPage">
                 <div className="centerInfo">
                     <form onSubmit={this.pressLogin}>
                         <h2>Login</h2>
-                        <span className="errorText">{this.state.msgError}</span>
+                        <span className="errorText">{this.state.msgError}</span><br />
                         <input className="inputs" type="text" placeholder="Email" name="email"
                             value={this.state.numExpedient} onChange={this.handleChange}></input>
                         <input className="inputs" type="password" placeholder="Password" name="password"
@@ -60,8 +66,8 @@ class Login extends React.Component {
                         <br />
                         <button type="submit">LogIn!</button>
                     </form>
-                </div>
-                <img align="center" src="./fondo.png" alt="fondo"/>
+                </div ><br /><br /><br />
+                 <img src="./fondo.png" alt="fondo" />
             </div>
 
         )
