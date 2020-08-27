@@ -1,16 +1,24 @@
 .navLeft{
     padding-left: 2em;
     padding-right: 2em;
-    float:left;
-    width:20%;
+    text-align: center;
+    border: 1px solid black;
+
+    img{
+        border-radius: 50%;
+        border: 1px solid black;
+        width:70%;
+    }
 
     .info{
         text-align: center;
+
+        border: 1px solid black;
     }
 
     .list-icons{
         list-style:none;
-
+        text-align: left;
         li{
             padding: 1em;
         }
