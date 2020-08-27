@@ -2,7 +2,7 @@ import { utils } from './utils.js';
 
 
 export const validations = {
-    validateIdentification, validateLogin, validateContactUs
+    validateIdentification, validateLogin, validateContactUs, validateUser
 };
 
 function validateIdentification(identification) {
@@ -31,11 +31,25 @@ function validateLogin(credentials) {
 };
 
 function validateContactUs(contactUs) {
-    let error = utils.EMPTY;
+    let error = utils.EMPTY();
 
     if (utils.isNullOrEmpty(contactUs.message)) { error += ' Message body must be provided. '; }
     if (utils.isNullOrEmpty(contactUs.subject)) { error += ' Subject must be provided. '; }
     if (utils.isNullOrEmpty(contactUs.email)) { error += ' Email must be provided. '; }
 
-    if (!utils.isNullOrEmpty(error)) { throw Error(error); }
+    return error;
+};
+
+function validateUser(user) {
+    let error = utils.EMPTY();
+
+    if (utils.isNullOrEmpty(user.username)) { error += ' Username must be provided. '; }
+    if (utils.isNullOrEmpty(user.name) || utils.isNullOrEmpty(user.surname)) {
+        error += ' Name and Surname must be provided. ';
+    }
+    if (utils.isNullOrEmpty(user.country)) { error += ' Country must be provided. '; }
+    if (utils.isNullOrEmpty(user.city)) { error += ' City must be provided. '; }
+    if (utils.isNullOrEmpty(user.hobbies)) { error += ' Hobbies must be provided. '; }
+
+    return error;
 };

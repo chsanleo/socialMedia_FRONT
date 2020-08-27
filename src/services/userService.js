@@ -2,7 +2,7 @@ import { userRepository } from '../repositories/userRepository.js';
 import { logoutAction, loginAction } from '../redux/actions/user.js';
 
 export const userService = {
-    signup, login, getProfile, logout, forgotPass
+    signup, login, getProfile, logout, forgotPass, update
 };
 
 function signup(email) {
@@ -42,5 +42,12 @@ function forgotPass(identification) {
     userRepository.forgotPass(identification)
         .then()
         .catch(error => console.log(error));
+};
+
+function update(user) {
+    userRepository.updateUser(user)
+        .then()
+        .catch(error => console.log(error));
+        //updateUserAction
 };
 
