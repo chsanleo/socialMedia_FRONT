@@ -6,6 +6,7 @@ import { eventService } from '../../services/eventService.js';
 import { dataService } from '../../services/dataService.js';
 
 import SearchByInterest from '../../components/searchEvent/searchEvents.jsx';
+import EventItem from '../../components/eventItem/eventItem.jsx';
 
 import './landing.scss';
 
@@ -46,22 +47,7 @@ class Landing extends React.Component {
                     <SearchByInterest />
                 </div>
                 <div className="event">
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
-                    <p>landing</p>
+                    <EventItem />
                 </div>
             </div>
         )
