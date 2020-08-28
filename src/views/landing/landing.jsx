@@ -5,6 +5,8 @@ import NavLeft from '../../components/navLeft/navLeft.jsx';
 import { eventService } from '../../services/eventService.js';
 import { dataService } from '../../services/dataService.js';
 
+import SearchByInterest from '../../components/searchEvent/searchEvents.jsx';
+
 import './landing.scss';
 
 class Landing extends React.Component {
@@ -12,14 +14,24 @@ class Landing extends React.Component {
         super(props);
 
         this.state = {
+            firstLoad: true,
             msgError: ''
         }
     }
 
     componentDidMount() {
-        if (this.props.userL.id === undefined) { this.props.history.push('/'); }
-        eventService.getAllEvents();
-        dataService.getAllCountries();
+        if (this.state.firstLoad) {
+            if (this.props.userL.id === undefined) { this.props.history.push('/'); }
+
+            let eventType = {
+                type: this.props.userL.hobbies
+            }
+
+            eventService.getAllEvents(eventType);
+            dataService.getAllCountries();
+
+            this.setState({ firstLoad: false });
+        }
     }
 
     handleChange = (ev) => {
@@ -30,7 +42,9 @@ class Landing extends React.Component {
         return (
             <div className="landing">
                 <div className="leftMenu"><NavLeft /></div>
-
+                <div className="options">
+                    <SearchByInterest />
+                </div>
                 <div className="event">
                     <p>landing</p>
                     <p>landing</p>
