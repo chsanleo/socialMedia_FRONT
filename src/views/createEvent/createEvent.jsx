@@ -5,8 +5,10 @@ import { NavLink } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
+import NavLeft from '../../components/navLeft/navLeft.jsx';
 import CountryList from '../../components/countryList/countryList.jsx';
 import TypesList from '../../components/typesList/typesList.jsx';
+
 import { validations } from '../../utils/validations.js';
 import { utils } from '../../utils/utils.js';
 import { eventService } from '../../services/eventService.js';
@@ -92,6 +94,8 @@ class CreateEvent extends React.Component {
     }
     render() {
         return (
+            <div className="createEvent">
+            <div className="leftMenu"><NavLeft /></div>
             <div className="centerInfo" >
                 <form onSubmit={this.pressCreate}>
                     <h2>Event information</h2>
@@ -134,6 +138,7 @@ class CreateEvent extends React.Component {
                     </div>
                 </form>
                 <NavLink to="/init" ></NavLink>
+            </div>
             </div>
         )
     }

@@ -9,13 +9,19 @@ class EventItem extends React.Component {
         this.state = {}
     }
 
+    cleanDate(date){
+        let dateClean = date.split('T');
+        return (dateClean[0]);
+    }
+
     render() {
         return (
             <div className="eventItem" >
                 {this.props.eventList?.map(event => (
                     <div key={event._id} >
-                        <h3>{event.title}</h3><p>{event.date}</p>
+                        <h3>{event.title}</h3><p>{this.cleanDate(event.date)}</p>
                         <img src={event.pic_path != null ? event.pic_path : 'Activities.png'} />
+                        <p className="createBy">Create by: {event.owner[0].username}</p>
                     </div>
                 ))}
             </div>

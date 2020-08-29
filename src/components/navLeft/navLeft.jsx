@@ -15,9 +15,7 @@ class NavLeft extends React.Component {
     render() {
 
         if (this.props.userL.id === undefined) {
-
             return (<div />);
-
         } else {
             return (
 
@@ -25,19 +23,20 @@ class NavLeft extends React.Component {
 
                     <div>
                         <NavLink exact to="/profile">
-                            <img src={this.props.userL.pic_path !== null ? this.props.userL.pic_path : './defaultProfile.png'} alt="profilePhoto" />
+                            <img className="profilePicLeft" src={this.props.userL.pic_path !== '' ? this.props.userL.pic_path : './defaultProfile.png'} alt="profilePhoto" />
                         </NavLink>
                         <div className="info">
-                            <p>{this.props.userL.username !== '' ? this.props.userL.username : '<insert your username>'}</p>
-                            <p>You have {this.props.userL.numFriends} friends now.</p>
-                            <p>You have  {this.props.userL.pendingFriends} pending friends request.</p>
-                            <p>Your hobbies or interests are :{this.props.userL.hobbies}</p>
+                            <h3>{this.props.userL.username !== '' ? this.props.userL.username : '<insert your username>'}</h3>
+                            <p>{this.props.userL.numFriends} friends now.</p>
+                            <p>{this.props.userL.pendingFriends} pending request.</p>
+                            <p>Your hobby is :{this.props.userL.hobbies}</p>
                         </div>
                     </div>
 
                     <ul className="listMenu">
-                        <li><NavLink exact to="/init">Go to my Events List</NavLink></li>
-                        <li><Link to="/logOut">Logout</Link></li>
+                        <li><NavLink exact to="/init"><img className="linkImg" src="./home.png" alt="Home"/></NavLink></li>
+                        <li><NavLink to="/contactMail"><img className="linkImg" src="./contactUs.png" alt="Contact Us"/></NavLink></li>
+                        <li><Link to="/logOut"><img className="linkImg" src="./LogOut.png" alt="Log Out"/></Link></li>
                     </ul>
 
                 </div>

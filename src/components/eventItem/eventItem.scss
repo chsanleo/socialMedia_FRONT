@@ -1,3 +1,15 @@
 .eventItem{
     padding:1em;
+    .createBy{
+        text-decoration: none ;
+        color:black;
+        font-weight: bold;
+    }
+    .createBy:hover{
+        color:var(--text-color);
+    }
+    img{
+        width: 400px;
+        max-height: 800px;
+    }
 }
