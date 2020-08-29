@@ -67,7 +67,8 @@ class Login extends React.Component {
                         <button type="submit">LogIn!</button>
                     </form>
                 </div ><br /><br /><br />
-                 <img src="./fondo.png" alt="fondo" />
+                 <img src="./fondo.png" alt="fondo" /><br/><br/>
+                 <NavLink to="/contactMail">Contact Us</NavLink><br/>
             </div>
 
         )
