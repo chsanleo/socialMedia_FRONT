@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,7 +10,6 @@ import TypesList from '../../components/typesList/typesList.jsx';
 import { validations } from '../../utils/validations.js';
 import { utils } from '../../utils/utils.js';
 import { eventService } from '../../services/eventService.js';
-import { NavLink } from 'react-router-dom';
 
 
 class CreateEvent extends React.Component {
@@ -22,7 +22,6 @@ class CreateEvent extends React.Component {
             msgError: ''
         }
         this.handleChange = this.handleChange.bind(this);
-        this.setDate = this.setDate.bind(this);
     }
 
     handleChange = (ev) => {
@@ -46,18 +45,18 @@ class CreateEvent extends React.Component {
     setDate(date) {
         this.setState({ date: date });
     }
-    isIMG(imageURL){
+    isIMG() {
 
-        let url = imageURL.split('.');
-        switch(url[url.length-1]){
+        let url = this.state.pic_path.split('.');
+        switch (url[url.length - 1]) {
             case 'jpg':
             case 'JPG':
             case 'jpeg':
             case 'JPEG':
             case 'png':
-            case 'PNG': return(<img src={this.state.pic_path} width="200px" alt="eventPhoto" />);
+            case 'PNG': return (<img src={this.state.pic_path} width="200px" alt="eventPhoto" />);
 
-            default : return (<img src='Activities.png' width="200px" alt="eventPhoto" />)
+            default: return (<img src='Activities.png' width="200px" alt="eventPhoto" />);
         }
     }
 
@@ -96,42 +95,45 @@ class CreateEvent extends React.Component {
             <div className="centerInfo" >
                 <form onSubmit={this.pressCreate}>
                     <h2>Event information</h2>
-                    <div className="image">
-                        {this.isIMG(this.state.pic_path)}
-                     <br />
-                    </div>
-                    <p><label>Add remote Photo (url):</label>&nbsp;
-                    <input type="text" name="pic_path" value={this.state.pic_path || ''}
-                            onChange={this.handleChange}></input><br /></p>
-                    <span className="errorText">{this.state.msgError}</span>
+                    <div className="formsFormat">
+                        <div className="image">
+                            {this.isIMG()}
+                            <p><label>Add remote Photo (url):</label><br />
+                                <input type="text" name="pic_path" value={this.state.pic_path || ''}
+                                    onChange={this.handleChange}></input><br /></p>
+                            <br />
+                        </div>
+                        <div>
+                            <span className="errorText">{this.state.msgError}</span>
 
-                    <p><label>Title</label>&nbsp;
+                            <p><label>Title</label>&nbsp;
                     <input type="text" name="title" value={this.state.title || ''}
-                            onChange={this.handleChange}></input><br /></p>
-                    <p><label>Body</label>&nbsp;
+                                    onChange={this.handleChange}></input><br /></p>
+                            <p><label>Body</label>&nbsp;
                     <input type="text" name="body" value={this.state.body || ''}
-                            onChange={this.handleChange}></input><br /></p>
+                                    onChange={this.handleChange}></input><br /></p>
 
-                    <p><label>Date of event: </label>
-                        <DatePicker
-                            selected={this.state.date}
-                            onChange={date => this.setDate(date)}
-                            minDate={new Date()}
-                            name="date"
-                            dateFormat="dd/MM/yyyy"
-                        />
-                    </p>
-                    <p><label>City</label>&nbsp;
+                            <p><label>Date of event: </label></p>
+                                <DatePicker
+                                    selected={this.state.date}
+                                    onChange={date => this.setDate(date)}
+                                    minDate={new Date()}
+                                    name="date"
+                                    dateFormat="dd/MM/yyyy"
+                                />
+                            
+                            <p><label>City</label>&nbsp;
                     <input type="text" name="city" value={this.state.city || ''}
-                            onChange={this.handleChange}></input><br /></p>
-                    <p><label>Country: </label> {this.props.user.country}<br />
-                        <CountryList setCountry={this.setCountry} readOnly /></p>
-                    <p><label>Type: </label> {this.props.user.hobbies}<br />
-                        <TypesList setHobby={this.setHobby} readOnly /></p>
-                    <br />
-                    <button type="submit">Create Event!</button><br />
-                    <NavLink to ="/init" ></NavLink>
+                                    onChange={this.handleChange}></input><br /></p>
+                            <p><label>Country: </label> {this.props.user.country}<br />
+                                <CountryList setCountry={this.setCountry} readOnly /></p>
+                            <p><label>Type: </label> {this.props.user.hobbies}<br />
+                                <TypesList setHobby={this.setHobby} readOnly /></p>
+                            <br />
+                            <button type="submit">Create Event!</button><br /></div>
+                    </div>
                 </form>
+                <NavLink to="/init" ></NavLink>
             </div>
         )
     }
