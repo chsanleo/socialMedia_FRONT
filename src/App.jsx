@@ -11,6 +11,7 @@ import ContactMail from './views/contactUs/contactUs.jsx';
 import Profile from './views/profile/profile.jsx';
 import Logout from './views/logout/logout.jsx';
 import ForgotPass from './views/forgotPass/forgotPass.jsx';
+import CreateEvent from './views/createEvent/createEvent.jsx';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route path='/profile' exact component={Profile} />
         <Route path='/logout' exact component={Logout} />
         <Route path='/forgotPass' exact component={ForgotPass} />
-
+        <Route path='/createevent' exact component={CreateEvent} />
 
         <Route component={Page404} />
       </Switch>
