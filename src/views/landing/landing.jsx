@@ -44,9 +44,9 @@ class Landing extends React.Component {
             <div className="landing">
                 <div className="leftMenu"><NavLeft /></div>
                 <div className="options">
-                    <SearchByInterest />
-                    <NavLink to="/createevent">Create a Event</NavLink><br/>
-                    <NavLink to="/contactMail">Contact Us</NavLink><br/>
+                    <SearchByInterest /><br/>
+                    <br/>
+                    <NavLink to="/createevent"><img className="linkImg" src="./addEvent.jpg" alt="Create a Event"/></NavLink><br/>                   
                 </div>
                 <div className="event">
                     <EventItem />
