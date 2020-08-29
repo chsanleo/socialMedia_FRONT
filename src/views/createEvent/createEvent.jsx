@@ -9,6 +9,7 @@ import TypesList from '../../components/typesList/typesList.jsx';
 import { validations } from '../../utils/validations.js';
 import { utils } from '../../utils/utils.js';
 import { eventService } from '../../services/eventService.js';
+import { NavLink } from 'react-router-dom';
 
 
 class CreateEvent extends React.Component {
@@ -129,6 +130,7 @@ class CreateEvent extends React.Component {
                         <TypesList setHobby={this.setHobby} readOnly /></p>
                     <br />
                     <button type="submit">Create Event!</button><br />
+                    <NavLink to ="/init" ></NavLink>
                 </form>
             </div>
         )
