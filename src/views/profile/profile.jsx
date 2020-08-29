@@ -2,6 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
 import CountryList from '../../components/countryList/countryList.jsx';
 import TypesList  from '../../components/typesList/typesList.jsx';
 import { userService } from '../../services/userService.js';
@@ -51,6 +54,9 @@ class Profile extends React.Component {
     setHobby = (hobby) => {
         this.setState({ hobbies: hobby });
     }
+    setDate(date) {
+        this.setState({ birthdate: date });
+    }
     pressUpdate = (ev) => {
         ev.preventDefault();
         let user = {
@@ -98,6 +104,14 @@ class Profile extends React.Component {
                     <p><label>Surname</label>&nbsp;
                     <input type="text" name="surname" value={this.state.surname || ''}
                         onChange={this.handleChange}></input><br /></p>
+                         <p><label>Bith date</label>&nbsp;
+                         <DatePicker
+                            selected={this.state.birthdate}
+                            onChange={date => this.setDate(date)}
+                            maxDate={new Date()}
+                            name="date"
+                            dateFormat="dd/MM/yyyy"
+                        /></p>
                     <p><label>Address</label>&nbsp;
                     <input type="text" name="address" value={this.state.address || ''}
                         onChange={this.handleChange}></input><br /></p>
