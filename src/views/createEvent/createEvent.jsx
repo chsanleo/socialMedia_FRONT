@@ -27,12 +27,6 @@ class CreateEvent extends React.Component {
     handleChange = (ev) => {
         this.setState({ [ev.target.name]: ev.target.type === 'string' ? +ev.target.value : ev.target.value });
     }
-    /*
-        handleChange(date) {
-            this.setState({
-              date: date
-            })
-          }*/
 
     componentDidMount() {
         if (utils.isNullOrEmpty(this.props.user == null)) { this.props.history.push('/'); }
