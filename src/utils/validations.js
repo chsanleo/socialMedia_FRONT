@@ -2,7 +2,7 @@ import { utils } from './utils.js';
 
 
 export const validations = {
-    validateIdentification, validateLogin, validateContactUs, validateUser
+    validateIdentification, validateLogin, validateContactUs, validateUser, validateEvent
 };
 
 function validateIdentification(identification) {
@@ -53,3 +53,14 @@ function validateUser(user) {
 
     return error;
 };
+
+function validateEvent (event){
+    let error = utils.EMPTY();
+
+    if (utils.isNullOrEmpty(event.title)) { error += ' Title must be provided. '; }
+    if (utils.isNullOrEmpty(event.body)) { error += ' Body must be provided. '; }
+    if (utils.isNullOrEmpty(event.type)) { error += ' Type must be provided. '; }
+    if (utils.isNullOrEmpty(event.date)) { error += ' Date must be provided. '; }
+
+    return error;
+}
