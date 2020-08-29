@@ -15,9 +15,7 @@ class NavLeft extends React.Component {
     render() {
 
         if (this.props.userL.id === undefined) {
-
             return (<div />);
-
         } else {
             return (
 
@@ -25,7 +23,7 @@ class NavLeft extends React.Component {
 
                     <div>
                         <NavLink exact to="/profile">
-                            <img className="profilePicLeft" src={this.props.userL.pic_path !== null ? this.props.userL.pic_path : './defaultProfile.png'} alt="profilePhoto" />
+                            <img className="profilePicLeft" src={this.props.userL.pic_path !== '' ? this.props.userL.pic_path : './defaultProfile.png'} alt="profilePhoto" />
                         </NavLink>
                         <div className="info">
                             <h3>{this.props.userL.username !== '' ? this.props.userL.username : '<insert your username>'}</h3>
