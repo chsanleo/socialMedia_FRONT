@@ -50,12 +50,12 @@ class ContactUs extends React.Component {
 
     render() {
         return (
-            <div className="fondo">
+            <div className="centerInfo">
                 <div className="contactUs">
                     <span className="error">{this.state.msgError}</span><br />
-                    <input className="inputs" placeholder="Your email" type="text" name="email" value={this.state.email} onChange={this.handleChange}></input>
-                    <input className="inputs" placeholder="Subject" type="text" name="subject" value={this.state.subject} onChange={this.handleChange}></input>
-                    <input className="inputs" placeholder="What do you want say to us" type="text" name="message" value={this.state.message} onChange={this.handleChange}></input>
+                    <input placeholder="Your email" type="text" name="email" value={this.state.email} onChange={this.handleChange}></input><br/>
+                    <input  placeholder="Subject" type="text" name="subject" value={this.state.subject} onChange={this.handleChange}></input><br/>
+                    <input placeholder="What do you want say to us" type="text" name="message" value={this.state.message} onChange={this.handleChange}></input><br/>
                     <button onClick={this.createContactMsg}>ENVIAR!</button>
                 </div>
             </div>
