@@ -72,7 +72,6 @@ class Profile extends React.Component {
             this.setState({ msgError: error });
             return;
         }
-        console.log(user);
         try {
             userService.update(user);
             setTimeout(() => {

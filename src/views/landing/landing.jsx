@@ -9,6 +9,7 @@ import SearchByInterest from '../../components/searchEvent/searchEvents.jsx';
 import EventItem from '../../components/eventItem/eventItem.jsx';
 
 import './landing.scss';
+import { NavLink } from 'react-router-dom';
 
 class Landing extends React.Component {
     constructor(props) {
@@ -38,13 +39,15 @@ class Landing extends React.Component {
     handleChange = (ev) => {
         this.setState({ [ev.target.name]: ev.target.type === 'string' ? +ev.target.value : ev.target.value });
     }
-
     render() {
         return (
             <div className="landing">
                 <div className="leftMenu"><NavLeft /></div>
                 <div className="options">
                     <SearchByInterest />
+
+                      <NavLink to="/createevent">Create a Event</NavLink>
+
                 </div>
                 <div className="event">
                     <EventItem />
