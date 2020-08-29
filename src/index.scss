@@ -1,14 +1,15 @@
 .errorText{
   color:tomato;
 }
-
+.linkImg{
+	width: 60px;
+}
 .centerInfo {
-
 
 	margin-top: 3em;
 	margin-left: auto;
-	 margin-right: auto;
-	 width: 1000px;
+	margin-right: auto;
+	padding-left: 25%;
 	 
 	.formsFormat{
 		display: flex;
@@ -20,4 +21,14 @@
 			}
 		}
 	}
+}
+
+.leftMenu{
+	padding-top: 0em;
+    display:flex;
+    flex-direction:column;
+    display: float;
+    position:relative;
+    width: 20%;
+    position: fixed;
 }
