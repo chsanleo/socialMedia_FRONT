@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { NavLink } from 'react-router-dom';
+import './eventItem.scss';
 
 class EventItem extends React.Component {
     constructor(props) {
@@ -11,14 +11,11 @@ class EventItem extends React.Component {
 
     render() {
         return (
-            <div >
+            <div className="eventItem" >
                 {this.props.eventList?.map(event => (
                     <div key={event._id} >
-
-                        <p>{event.title}</p>
+                        <h3>{event.title}</h3><p>{event.date}</p>
                         <img src={event.pic_path != null ? event.pic_path : 'Activities.png'} />
-                        <p>{event.date}</p>
-
                     </div>
                 ))}
             </div>
