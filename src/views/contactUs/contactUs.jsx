@@ -1,21 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { contactService } from '../../services/contactService.js';
 import { validations } from '../../utils/validations.js';
 import { utils } from '../../utils/utils.js';
+import { NavLink } from 'react-router-dom';
 
 class ContactUs extends React.Component {
+
     constructor(props) {
         super(props);
 
         this.state = {
-            userID: "",
-            subject: "",
-            email: "",
-            message: "",
-            msgError: "",
+            userID: 0,
+            subject: '',
+            email: '',
+            message: '',
+            msgError: '',
         }
-        this.createContactMsg = this.createContactMsg.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange = (ev) => {
@@ -23,10 +26,14 @@ class ContactUs extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ userID: 0});
+        this.setState({ userID: this.props.userL.id != null ? this.props.userL.id : 0 });
     }
-
-    createContactMsg() {
+    returnApp(){
+        if(this.props.userL.id != null){
+            return (<NavLink to ="/init" > Return to Init</NavLink>);
+        }
+    }
+    pressSend() {
         const contactMsg = {
             userID: this.state.userID,
             message: this.state.message,
@@ -52,14 +59,20 @@ class ContactUs extends React.Component {
         return (
             <div className="centerInfo">
                 <div className="contactUs">
-                    <span className="error">{this.state.msgError}</span><br />
-                    <input placeholder="Your email" type="text" name="email" value={this.state.email} onChange={this.handleChange}></input><br/>
-                    <input  placeholder="Subject" type="text" name="subject" value={this.state.subject} onChange={this.handleChange}></input><br/>
-                    <input placeholder="What do you want say to us" type="text" name="message" value={this.state.message} onChange={this.handleChange}></input><br/>
-                    <button onClick={this.createContactMsg}>ENVIAR!</button>
+                    <h3>What do u want say to us?</h3>
+                    <span className="errorText">{this.state.msgError}</span><br />
+                    <form onSubmit={this.pressSend}>
+                        <input placeholder="Your email" type="text" name="email" value={this.state.email} onChange={this.handleChange}></input><br />
+                        <input placeholder="Subject" type="text" name="subject" value={this.state.subject} onChange={this.handleChange}></input><br />
+                        <input placeholder="What do you want say to us" type="text" name="message" value={this.state.message} onChange={this.handleChange}></input><br />
+                        <button type="submit">ENVIAR!</button>
+                        {this.returnApp()}
+                    </form>
                 </div>
+                {/* if logged return to init */}
             </div>
         );
     }
 };
-export default ContactUs;
+const mapStateToProps = ({ users }) => ({ userL: users?.user })
+export default connect(mapStateToProps)(ContactUs);
