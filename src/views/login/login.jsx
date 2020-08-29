@@ -54,7 +54,6 @@ class Login extends React.Component {
     render() {
         return (
             <div className="loginPage">
-                <div className="centerInfo">
                     <form onSubmit={this.pressLogin}>
                         <h2>Login</h2>
                         <span className="errorText">{this.state.msgError}</span><br />
@@ -66,9 +65,9 @@ class Login extends React.Component {
                         <br />
                         <button type="submit">LogIn!</button>
                     </form>
-                </div ><br /><br /><br />
+                <br /><br /><br />
                  <img src="./fondo.png" alt="fondo" /><br/><br/>
-                 <NavLink to="/contactMail">Contact Us</NavLink><br/>
+                 <NavLink to="/contactMail"><img src="./contactUs.png" width="50px" alt="Contact Us"/></NavLink><br/>
             </div>
 
         )
