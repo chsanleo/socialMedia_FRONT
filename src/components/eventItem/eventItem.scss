@@ -1,3 +1,11 @@
 .eventItem{
     padding:1em;
+    .createBy{
+        text-decoration: none ;
+        color:black;
+        font-weight: bold;
+    }
+    .createBy:hover{
+        color:var(--text-color);
+    }
 }
