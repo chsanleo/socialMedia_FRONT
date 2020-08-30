@@ -18,9 +18,7 @@ class NavLeft extends React.Component {
             return (<div />);
         } else {
             return (
-
                 <div className="navLeft">
-
                     <div>
                         <NavLink exact to="/profile">
                             <img className="profilePicLeft" src={this.props.userL.pic_path !== '' ? this.props.userL.pic_path : './defaultProfile.png'} alt="profilePhoto" />
@@ -38,7 +36,6 @@ class NavLeft extends React.Component {
                         <li><NavLink to="/contactMail"><img className="linkImg" src="./contactUs.png" alt="Contact Us"/></NavLink></li>
                         <li><Link to="/logOut"><img className="linkImg" src="./LogOut.png" alt="Log Out"/></Link></li>
                     </ul>
-
                 </div>
             );
         }
