@@ -117,7 +117,7 @@ class CreateEvent extends React.Component {
                     <input type="text" name="body" value={this.state.body || ''}
                                     onChange={this.handleChange}></input><br /></p>
 
-                            <p><label>Date of event: </label></p>
+                            <label>Date of event: </label>&nbsp;
                                 <DatePicker
                                     selected={this.state.date}
                                     onChange={date => this.setDate(date)}
