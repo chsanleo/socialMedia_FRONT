@@ -18,9 +18,11 @@ class EventItem extends React.Component {
         return (
             <div className="eventItem" >
                 {this.props.eventList?.map(event => (
-                    <div key={event._id} >
+                    <div key={event._id}>
                         <h3>{event.title}</h3><p>{this.cleanDate(event.date)}</p>
-                        <img src={event.pic_path != null ? event.pic_path : 'Activities.png'} />
+                        <img src={event.pic_path !== '' ? event.pic_path : 'Activities.png'}
+                            onClick={e => this.props.setEvent( event )}
+                            alt ="eventPic" />
                         <p className="createBy">Create by: {event.owner[0].username}</p>
                     </div>
                 ))}
