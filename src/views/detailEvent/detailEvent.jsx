@@ -26,6 +26,17 @@ class CreateEvent extends React.Component {
     }
 
     //#region beauty helpers 
+    ownerOptions() {
+        console.log(this.props.event.owner)
+        if (this.props.event.owner.find(element => element.id === this.props.user.id)) {
+            return (
+                <div>
+                    <img src="./update.png" onClick={this.updateEvent} width="20px" alt="updatePic" />&nbsp;
+                    <img src="./delete.png" onClick={this.deleteEvent} width="20px" alt="deletePic" />
+                </div>
+            );
+        }
+    }
     IMGlink() {
         if (!utils.isNullOrEmpty(this.props.event.pic_path)) { return (this.props.event.pic_path); }
         return ('./Activities.png');
@@ -33,10 +44,10 @@ class CreateEvent extends React.Component {
     cleanDate(date) {
         return (date.split('T')[0]);
     }
-    numberLikes(){
+    numberLikes() {
         return (this.props.event.userLikes.length);
     }
-    numberJoins(){
+    numberJoins() {
         return (this.props.event.userJoin.length);
     }
     //#endregion
@@ -73,21 +84,38 @@ class CreateEvent extends React.Component {
             return (<img className="linkImg" src="./join.png" onClick={this.join} alt="joinPic" />);
         }
     }
+    whoJoinedIt() {
+        if (this.props.event.userJoin.length !== 0) { return (''); }
+         
+    }
     //#endregion
 
+    //#region Delete
+    deleteEvent() {
+        console.log('delete')
+    }
+    //#endregion
+
+    //#region Update
+    updateEvent() {
+        console.log('update')
+    }
+    //#endregion
 
     render() {
         return (
             <div className="createEvent">
                 {<div className="leftMenu"><NavLeft /></div>}
                 <div className="centerInfo" >
-                    <h2>Event information</h2>
+                    <h2>Event information  {this.ownerOptions()}</h2>
                     <div className="formsFormat">
                         <div className="image">
                             <img src={this.IMGlink()} width="200px" alt="eventPhoto" /><br />
                             <p>Likes: {this.numberLikes()}</p> {this.haveLike()}
-                            <p> User join this activity : {this.numberJoins()} </p> {this.haveJoin()}
-                             
+                            <p>User join this activity : {this.numberJoins()} </p>
+                            {this.whoJoinedIt()}
+                            {this.haveJoin()}
+
 
                             <br />
                         </div>
