@@ -64,7 +64,7 @@ class CreateEvent extends React.Component {
     haveLike() {
         if (this.props.event.userLikes.length !== 0) {
             if (this.props.event.userLikes.find(element => element.id === this.props.user.id)) {
-                return (<img className="linkImg" src="./dislike.png" onClick={this.disLike} alt="dislikePic" />);
+                return (<img className="linkImg" src="./dislike.png" onClick={this.dislike} alt="dislikePic" />);
             }
         }
         return (<img className="linkImg" src="./like.png" onClick={this.addLike} alt="likePic" />);
