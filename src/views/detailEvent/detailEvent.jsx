@@ -5,6 +5,7 @@ import './detailEvent.scss';
 
 import NavLeft from '../../components/navLeft/navLeft.jsx';
 import { eventService } from '../../services/eventService.js';
+import { messageService } from '../../services/messageService.js';
 import { utils } from '../../utils/utils.js';
 
 class DetailEvent extends React.Component {
@@ -27,9 +28,15 @@ class DetailEvent extends React.Component {
             this.props.history.push('/');
          }*/
         if (utils.isNullOrEmpty(this.props.user.username)) { this.props.history.push('/profile'); }
+        
+        const eventMessage = {
+            evetnParentId: this.props.event.id
+        };
+
+        messageService.getAllMessages(eventMessage);
     }
 
-    //#region beauty helpers 
+    //#region Beauty Helpers 
     ownerOptions() {
         if (this.props.event.owner.find(element => element.id === this.props.user.id)) {
             return (
@@ -120,10 +127,10 @@ class DetailEvent extends React.Component {
                             <p>User join this activity : {this.numberJoins()} </p>
                             <div >
                                 {
-                                this.props.event.userJoin.map(item => (
-                                    <img className="profilePicList" key={item.id} src={item.pic_path !== '' ? item.pic_path : './defaultProfile.png'}
-                                        onClick={this.profile({ item })} alt="joinPic" title={item.username} />
-                                ))
+                                    this.props.event.userJoin.map(item => (
+                                        <img className="profilePicList" key={item.id} src={item.pic_path !== '' ? item.pic_path : './defaultProfile.png'}
+                                            onClick={this.profile({ item })} alt="joinPic" title={item.username} />
+                                    ))
                                 }
 
                             </div>
