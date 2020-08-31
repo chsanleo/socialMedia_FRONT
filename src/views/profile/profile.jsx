@@ -81,6 +81,7 @@ class Profile extends React.Component {
             surname: this.state.surname,
             pic_path: this.state.pic_path,
             address: this.state.address,
+            birthdate :this.state.birthdate,
             email: this.state.email,
             city: this.state.city,
             country: this.state.country != null ? this.state.country : this.props.user.country,
