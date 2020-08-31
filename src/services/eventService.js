@@ -26,7 +26,7 @@ function joinEvent(userIntoEvent) {
 function likeEvent(userIntoEvent) {
     eventRepository.likeEvent(userIntoEvent)
         .then(res => { 
-            
+
             addEventAction(res); })
         .catch(error => console.log(error));
 };

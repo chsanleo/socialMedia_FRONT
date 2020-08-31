@@ -32,6 +32,8 @@ class CreateEvent extends React.Component {
 
     componentDidMount() {
         if (utils.isNullOrEmpty(this.props.user == null)) { this.props.history.push('/'); }
+        if (utils.isNullOrEmpty(this.props.user.username)) { this.props.history.push('/profile'); }
+
         this.setState({
             owner: this.props.user,
             country: this.props.user.country,
