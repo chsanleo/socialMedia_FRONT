@@ -10,8 +10,7 @@ class EventItem extends React.Component {
     }
 
     cleanDate(date){
-        let dateClean = date.split('T');
-        return (dateClean[0]);
+        return (date.split('T')[0]);
     }
 
     render() {
