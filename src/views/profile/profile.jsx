@@ -30,9 +30,8 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        if (utils.isNullOrEmpty(this.props.user == null)) {
-            this.props.history.push('/');
-        }
+        if (this.props.user.id === undefined) { this.props.history.push('/'); }
+
         this.setState({
             id: this.props.user.id,
             username: this.props.user.username,
