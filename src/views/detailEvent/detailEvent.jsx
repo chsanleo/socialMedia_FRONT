@@ -81,12 +81,14 @@ class CreateEvent extends React.Component {
             if (this.props.event.userJoin.find(element => element.id === this.props.user.id)) {
                 return (/*<img className="linkImg" src="./unjoin.png" onClick={this.unJoin} alt="unjoinPic"/>*/'');
             }
-            return (<img className="linkImg" src="./join.png" onClick={this.join} alt="joinPic" />);
         }
+        return (<img className="linkImg" src="./join.png" onClick={this.join} alt="joinPic" />);
     }
-    whoJoinedIt() {
-        if (this.props.event.userJoin.length !== 0) { return (''); }
-         
+    //#endregion
+
+    //#region External User Profile
+    profile(user) {
+        console.log("dentroProfile" + user)
     }
     //#endregion
 
