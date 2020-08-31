@@ -110,7 +110,7 @@ class DetailEvent extends React.Component {
     render() {
         return (
             <div className="createEvent">
-                {<div className="leftMenu"><NavLeft /></div>}
+                <div className="leftMenu"><NavLeft /></div>
                 <div className="centerInfo" >
                     <h2>Event information  {this.ownerOptions()}</h2>
                     <div className="formsFormat">
