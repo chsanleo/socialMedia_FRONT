@@ -16,24 +16,19 @@ class Landing extends React.Component {
         super(props);
 
         this.state = {
-            firstLoad: true,
             msgError: ''
         }
     }
 
     componentDidMount() {
-        if (this.state.firstLoad) {
-            if (this.props.userL.id === undefined) { this.props.history.push('/'); }
+        if (this.props.userL.id === undefined) { this.props.history.push('/'); }
 
-            let eventType = {
-                type: this.props.userL.hobbies
-            }
-
-            eventService.getAllEvents(eventType);
-            dataService.getAllCountries();
-
-            this.setState({ firstLoad: false });
+        let eventType = {
+            type: this.props.userL.hobbies
         }
+
+        eventService.getAllEvents(eventType);
+        dataService.getAllCountries();
     }
 
     handleChange = (ev) => {
