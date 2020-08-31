@@ -1,33 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import './detailEvent.scss';
+
 import NavLeft from '../../components/navLeft/navLeft.jsx';
 import { eventService } from '../../services/eventService.js';
 import { utils } from '../../utils/utils.js';
 
-class CreateEvent extends React.Component {
+class DetailEvent extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            message: ''
         }
+
         this.addLike = this.addLike.bind(this);
+        this.dislike = this.dislike.bind(this);
         this.join = this.join.bind(this);
+        this.profile = this.profile.bind(this);
     }
 
     componentDidMount() {
-        /*if (this.props.event === undefined || this.props.user === undefined) { 
+        if (this.props.user.id === undefined) { this.props.history.push('/'); }
+        /*
+        if (this.props.event.owner === undefined || this.props.user.id === undefined) { 
             this.props.history.push('/');
          }*/
-        if (this.props.user.id === undefined) { this.props.history.push('/'); }
-        console.log(this.props.user)
-        console.log(this.props.event)
+        if (utils.isNullOrEmpty(this.props.user.username)) { this.props.history.push('/profile'); }
     }
 
     //#region beauty helpers 
     ownerOptions() {
-        console.log(this.props.event.owner)
         if (this.props.event.owner.find(element => element.id === this.props.user.id)) {
             return (
                 <div>
@@ -111,18 +114,22 @@ class CreateEvent extends React.Component {
                 <div className="centerInfo" >
                     <h2>Event information  {this.ownerOptions()}</h2>
                     <div className="formsFormat">
-                        <div className="image">
-                            <img src={this.IMGlink()} width="200px" alt="eventPhoto" /><br />
-                            <p>Likes: {this.numberLikes()}</p> {this.haveLike()}
+                        <div>
+                            <img src={this.IMGlink()} width="200px" alt="eventPhoto" /><br /><br /><br />
+                            <p>{this.haveLike()}&nbsp;&nbsp;&nbsp;Likes: {this.numberLikes()}</p> <br /><br />
                             <p>User join this activity : {this.numberJoins()} </p>
-                            {this.whoJoinedIt()}
-                            {this.haveJoin()}
+                            <div >
+                                {
+                                this.props.event.userJoin.map(item => (
+                                    <img className="profilePicList" key={item.id} src={item.pic_path !== '' ? item.pic_path : './defaultProfile.png'}
+                                        onClick={this.profile({ item })} alt="joinPic" title={item.username} />
+                                ))
+                                }
 
-
-                            <br />
+                            </div>
+                            {this.haveJoin()}<br />
                         </div>
                         <div>
-                            <span className="errorText">{this.state.msgError}</span>
                             <p><label>Title:</label>&nbsp;{this.props.event.title}</p>
                             <p><label>Date of event:</label>&nbsp;{this.cleanDate(this.props.event.date)}</p>
                             <p><label>City: </label>&nbsp;{this.props.event.city}</p>
@@ -140,7 +147,7 @@ class CreateEvent extends React.Component {
     }
 }
 const mapStateToProps = ({ users, event }) => ({
-    user: users?.user,
+    user: users.user,
     event: event.event
 });
-export default connect(mapStateToProps)(CreateEvent);
+export default connect(mapStateToProps)(DetailEvent);
