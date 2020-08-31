@@ -16,40 +16,40 @@ class Landing extends React.Component {
         super(props);
 
         this.state = {
-            firstLoad: true,
             msgError: ''
         }
     }
 
     componentDidMount() {
-        if (this.state.firstLoad) {
-            if (this.props.userL.id === undefined) { this.props.history.push('/'); }
+        if (this.props.userL.id === undefined) { this.props.history.push('/'); }
 
-            let eventType = {
-                type: this.props.userL.hobbies
-            }
-
-            eventService.getAllEvents(eventType);
-            dataService.getAllCountries();
-
-            this.setState({ firstLoad: false });
+        let eventType = {
+            type: this.props.userL.hobbies
         }
+
+        eventService.getAllEvents(eventType);
+        dataService.getAllCountries();
     }
 
     handleChange = (ev) => {
         this.setState({ [ev.target.name]: ev.target.type === 'string' ? +ev.target.value : ev.target.value });
     }
+    setEvent = (event) => {
+        eventService.detailEvent(event);
+        this.props.history.push('/detailEvent');
+    }
+
     render() {
         return (
             <div className="landing">
                 <div className="leftMenu"><NavLeft /></div>
                 <div className="options">
-                    <SearchByInterest /><br/>
-                    <br/>
-                    <NavLink to="/createevent"><img className="linkImg" src="./addEvent.jpg" alt="Create a Event"/></NavLink><br/>                   
+                    <SearchByInterest /><br />
+                    <br />
+                    <NavLink to="/createevent"><img className="linkImg" src="./addEvent.jpg" alt="Create a Event" /></NavLink><br />
                 </div>
                 <div className="event">
-                    <EventItem />
+                    <EventItem setEvent={this.setEvent} readOnly />
                 </div>
             </div>
         )

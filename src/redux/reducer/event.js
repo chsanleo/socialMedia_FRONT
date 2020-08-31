@@ -1,7 +1,8 @@
-import { ADD_EVENTS } from '../types/event.js';
+import { ADD_EVENTS, ADD_ONE_EVENT } from '../types/event.js';
 
 const initialState = {
-    eventList: []
+    eventList: [],
+    event: {}
 };
 
 export default function reducer(state = initialState, action) {
@@ -10,6 +11,11 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 eventList: action.payload
+            };
+        case ADD_ONE_EVENT:
+            return {
+                ...state,
+                event: action.payload
             };
         default:
             return state;

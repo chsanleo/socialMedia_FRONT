@@ -63,4 +63,4 @@ function validateEvent (event){
     if (utils.isNullOrEmpty(event.date)) { error += ' Date must be provided. '; }
 
     return error;
-}
+};

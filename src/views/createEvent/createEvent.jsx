@@ -32,6 +32,8 @@ class CreateEvent extends React.Component {
 
     componentDidMount() {
         if (utils.isNullOrEmpty(this.props.user == null)) { this.props.history.push('/'); }
+        if (utils.isNullOrEmpty(this.props.user.username)) { this.props.history.push('/profile'); }
+
         this.setState({
             owner: this.props.user,
             country: this.props.user.country,
@@ -69,10 +71,10 @@ class CreateEvent extends React.Component {
             title: this.state.title,
             body: this.state.body,
             pic_path: this.state.pic_path,
-            type: this.state.type != '' ? this.state.type : this.props.user.hobbies,
+            type: this.state.type !== '' ? this.state.type : this.props.user.hobbies,
             date: this.state.date,
-            city: this.state.city != null ? this.state.city : this.props.user.city,
-            country: this.state.country != null ? this.state.country : this.props.user.country
+            city: this.state.city !== null ? this.state.city : this.props.user.city,
+            country: this.state.country !== null ? this.state.country : this.props.user.country
         };
 
         let error = validations.validateEvent(event);
@@ -117,7 +119,7 @@ class CreateEvent extends React.Component {
                     <input type="text" name="body" value={this.state.body || ''}
                                     onChange={this.handleChange}></input><br /></p>
 
-                            <p><label>Date of event: </label></p>
+                            <label>Date of event: </label>&nbsp;
                                 <DatePicker
                                     selected={this.state.date}
                                     onChange={date => this.setDate(date)}
