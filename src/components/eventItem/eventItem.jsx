@@ -3,14 +3,23 @@ import { connect } from 'react-redux';
 
 import './eventItem.scss';
 
+import {userService} from '../../services/userService.js';
+
 class EventItem extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {}
     }
 
     cleanDate(date){
         return (date.split('T')[0]);
+    }
+
+    profile(extUser) {
+        let user = { id: extUser.id };
+        userService.getExtProfile(user);
+        //this.props.history.push('/profileExt');
     }
 
     render() {
@@ -22,7 +31,7 @@ class EventItem extends React.Component {
                         <img src={event.pic_path !== '' ? event.pic_path : 'Activities.png'}
                             onClick={e => this.props.setEvent( event )}
                             alt ="eventPic" />
-                        <p className="createBy">Create by: {event.owner[0].username}</p>
+                        <p className="createBy" onClick={e => this.profile(event.owner[0])}>Create by: {event.owner[0].username} </p>
                     </div>
                 ))}
             </div>
