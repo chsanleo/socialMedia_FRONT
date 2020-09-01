@@ -20,6 +20,7 @@ class DetailEvent extends React.Component {
         this.dislike = this.dislike.bind(this);
         this.join = this.join.bind(this);
         this.profile = this.profile.bind(this);
+        this.deleteEvent = this.deleteEvent.bind(this);
     }
 
     componentDidMount() {
@@ -29,10 +30,8 @@ class DetailEvent extends React.Component {
             this.props.history.push('/');
          }*/
         if (utils.isNullOrEmpty(this.props.user.username)) { this.props.history.push('/profile'); }
-        
+
         this.uploadMessages()
-        //let eventMessage = { parentEvent: this.props.event._id };
-       // messageService.getAllMessages(eventMessage);
     }
 
     //#region Beauty Helpers 
@@ -96,7 +95,7 @@ class DetailEvent extends React.Component {
     //#endregion
 
 
-    uploadMessages(){
+    uploadMessages() {
         let eventMessage = { parentEvent: this.props.event._id };
         messageService.getAllMessages(eventMessage);
     }
@@ -109,7 +108,13 @@ class DetailEvent extends React.Component {
 
     //#region Delete
     deleteEvent() {
-        console.log('delete')
+        let event = { _id: this.props.event._id };
+        eventService.deleteEvent(event);
+        eventService.getAllEvents();
+        setTimeout(() => {
+            this.props.history.push('/init');
+        }, 1000);
+
     }
     //#endregion
 
@@ -137,7 +142,6 @@ class DetailEvent extends React.Component {
                                             onClick={this.profile({ item })} alt="joinPic" title={item.username} />
                                     ))
                                 }
-
                             </div>
                             {this.haveJoin()}<br />
                         </div>
@@ -153,7 +157,7 @@ class DetailEvent extends React.Component {
                             <br />
                         </div>
                     </div>
-                    <MesssageList/>
+                    <MesssageList />
                 </div>
             </div>
         )
