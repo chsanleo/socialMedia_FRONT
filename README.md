@@ -1,68 +1,101 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# FrontEnd, socialMedia
+![badge](https://img.shields.io/badge/working-active-brig)
 
-## Available Scripts
+FrontEnd proposed as a final project to show our improvements with the different tools we study across the FullStack Bootcamp. 
+For the current project we will use React as a technology to work with the fronted with Redux. 
 
-In the project directory, you can run:
+We wanted to go further and we installed different libraries, adding some extra features to our applications like the use of a Datepicker, Redux, Bootstrap and so on. 
 
-### `npm start`
+## How to Start 🚀
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
++ To use all our solution the best is clone our back first: 
+```
+ $ git clone https://github.com/chsanleo/socialMedia_BACK
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
++ and install the packages,
 
-### `npm test`
+```
+$ npm install
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
++ run the migrations to create the database
 
-### `npm run build`
+```
+$ sequelize db:migrate
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
++ populate the database with basic data
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+$ sequelize db:seed:all
+```
+ 
++ take a look to the /config/ files, where u need to take the samples and create ur own config files
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
++ clone the front repository
+```
+$ git clone https://github.com/chsanleo/socialMedia_FRONT
+```
++ run both, back and front in the source folder
+```
+$ npm start
+```
 
-### `npm run eject`
++ and... WORK!.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Project status
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+>Is not finish and we are working adding more features and improvements on it, also fixing some small details ;). 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Current Features 📄
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
++ Register users by asking for a credentials, this you gonna receive in ur mail.
++ Login and Log Out.
++ Accces to the profile of a current user and profile of other users at the system.
++ Create Events and manage them.
++ Add some message in every event and show if you like it or will join it.
++ Recovery in your mail directly a new password.
++ Use of Redux to the management of the data.
 
-## Learn More
+### Roadmap 📋
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**About the front**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
++ Add some features to give to the user more options.
++ Improve the design to something more near to UX.
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+**About features**
++ Add some features manage friends and use the mail to send between them.
++ Add answers to the messages.
 
-### Analyzing the Bundle Size
+## Test the application ⚙️
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Turn on the server.
+```
+$ npm start
+```
 
-### Making a Progressive Web App
+Use the browser of your choice and surf to http://localhost:3000/ to enter and with the developer tools u can start.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+![devtools](https://www.formacionprofesional.info/wp-content/uploads/2015/09/herramientas_desarrollo_iexplorer11.png)
 
-### Advanced Configuration
+Because we are using redux is a good idea also install the [redux develop tools](https://github.com/reduxjs/redux-devtools)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
+## Contributors ✒️
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+* **Christian Sanchez Leon** - [chsanleo](https://github.com/chsanleo)
 
-### `npm run build` fails to minify
+## License 📄
+[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Ask us before use. Feedback is welcome!. 
+If u need more documentation or have any doubts about the code don't hesitiate to contact us.
+
+## How to say 'thanks' to us  🎁
+
+* Tell others about this project 📢
+* Pay a beer 🍺 or coffee ☕ to us (or two, or... some ;) some snacks also recomendable ). 
+* Comments about always welcome!.
