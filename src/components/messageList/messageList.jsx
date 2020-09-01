@@ -12,42 +12,32 @@ class MesssageList extends React.Component {
         super(props);
 
         this.state = {
-            show: false
+            id: 0
         }
     }
     //#region Likes
-    haveLike() {/*
-        if (message.likes.length !== 0) {
-            if (message.likes.find(element => element.id === this.props.user.id)) {
-                return (<img className="linkImg" src="./dislike.png" onClick={this.dislike(message._id)} alt="dislikePic" />);
-            }
-        }
-        return (<img className="linkImg" src="./like.png" onClick={this.addLike(message._id)} alt="likePic" />);
-    */
-        return ('');
-    }
-    /*addLike(_id) {
-        let mssgLike = { _id: _id, user: this.props.user};
+    addLike(_id) {
+        let mssgLike = {
+            _id: _id, user: this.props.user,
+            parentEvent: this.props.messageList[0].parentEvent
+        };
+
         messageService.likeMessage(mssgLike);
-        
-       // let eventMessage = { parentEvent: this.props.event._id };
-       // messageService.getAllMessages(eventMessage);
     }
     dislike(_id) {
-        let mssgLike = { _id: _id, user: this.props.user
-         };
+        let mssgLike = {
+            _id: _id, user: this.props.user,
+            parentEvent: this.props.messageList[0].parentEvent
+        };
+
         messageService.dislikeMessage(mssgLike);
-        
-       // let eventMessage = { parentEvent: this.props.event._id };
-        //messageService.getAllMessages(eventMessage);
-    }*/
+    }
     //#endregion
 
     deleteMessage(id) {
-        let messageDelete = { _id: id }
+        let messageDelete = { _id: id, parentEvent: this.props.messageList[0].parentEvent }
         messageService.deleteMessage(messageDelete);
     }
-
 
     cleanDate(date) {
         return (date.split('T')[0]);
@@ -59,11 +49,11 @@ class MesssageList extends React.Component {
                 {this.props.messageList?.map(message => (
                     <div className="messageEvent" key={message._id}>
                         {
-                        message.owner[0].id === this.props.user.id ?
-                            <img src="./delete.png" onClick={e => this.deleteMessage(message._id)}
-                                width="20px" alt="deletePic" />
-                            : ''
-                            }
+                            message.owner[0].id === this.props.user.id ?
+                                <img src="./delete.png" onClick={e => this.deleteMessage(message._id)}
+                                    width="20px" alt="deletePic" />
+                                : ''
+                        }
                         <img className="profilePicList"
                             src={message.owner[0].pic_path !== '' ? message.owner[0].pic_path : './defaultProfile.png'}
                             onClick={e => this.props.profile(message.owner[0])}
@@ -74,7 +64,13 @@ class MesssageList extends React.Component {
                         <div>
                             {message.body}<br />
                             {message.likes.length}
-                            {this.haveLike}
+                            {
+                                message.likes.length !== 0 &&
+                                    message.likes.find(element => element.id === this.props.user.id) ?
+                                    <img className="linkImg" src="./dislike.png" onClick={e => this.dislike(message._id)} alt="dislikePic" />
+                                    :
+                                    <img className="linkImg" src="./like.png" onClick={e => this.addLike(message._id)} alt="likePic" />
+                            }
                         </div>
                     </div>
                 ))}

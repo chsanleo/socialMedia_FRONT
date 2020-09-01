@@ -38,8 +38,7 @@ class CreateMessage extends React.Component {
             messageService.createMessage(message);
 
             const eventMessage = { evetnParentId: this.props.event._id };
-            messageService.getAllMessages(eventMessage);
-            return;
+            messageService.getAllMessages(eventMessage);   
         }
     }
 
