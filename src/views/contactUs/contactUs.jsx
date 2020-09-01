@@ -26,33 +26,40 @@ class ContactUs extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ userID: this.props.userL.id != null ? this.props.userL.id : 0 });
+        this.setState({
+            userID: this.props.userL.id !== null ? this.props.userL.id : 0,
+            email: this.props.userL.email !== null ? this.props.userL.email : ''
+        });
     }
-    returnApp(){
-        if(this.props.userL.id != null){
-            return (<NavLink to ="/init" > Return to Init</NavLink>);
+    returnApp() {
+        if (this.props.userL.id != null) {
+            return (<NavLink to="/init" > Return to Init</NavLink>);
         }
     }
-    pressSend() {
+    pressSend = (ev) => {
+        ev.preventDefault();
         const contactMsg = {
             userID: this.state.userID,
             message: this.state.message,
             subject: this.state.subject,
             email: this.state.email
         }
+
         let error = validations.validateContactUs(contactMsg);
         if (!utils.isNullOrEmpty(error)) {
             this.setState({ msgError: error });
             return;
         }
-        try {
-            contactService.createContactMail(contactMsg);
-        } catch (error) {
-            console.log(error);
-        }
+
+        contactService.createContactMail(contactMsg);
+
         setTimeout(() => {
+            if (this.props.userL.email !== null) {
+                this.props.history.push('/init');
+            }
             this.props.history.push('/');
         }, 2000);
+
     }
 
     render() {
