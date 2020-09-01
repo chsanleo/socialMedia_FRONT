@@ -9,6 +9,7 @@ import MesssageList from '../../components/messageList/messageList.jsx';
 import { eventService } from '../../services/eventService.js';
 import { messageService } from '../../services/messageService.js';
 import { utils } from '../../utils/utils.js';
+import { userService } from '../../services/userService';
 
 class DetailEvent extends React.Component {
     constructor(props) {
@@ -101,8 +102,10 @@ class DetailEvent extends React.Component {
     }
 
     //#region External User Profile
-    profile(user) {
-        console.log("dentroProfile" + user)
+    profile(extUser) {
+        let user = {id: extUser.id};
+        userService.getExtProfile(user);
+        this.props.history.push('/profileExt');
     }
     //#endregion
 
@@ -139,7 +142,7 @@ class DetailEvent extends React.Component {
                                 {
                                     this.props.event.userJoin.map(item => (
                                         <img className="profilePicList" key={item.id} src={item.pic_path !== '' ? item.pic_path : './defaultProfile.png'}
-                                            onClick={this.profile({ item })} alt="joinPic" title={item.username} />
+                                            onClick={e => this.profile(item)} alt="joinPic" title={item.username} />
                                     ))
                                 }
                             </div>
@@ -157,14 +160,14 @@ class DetailEvent extends React.Component {
                             <br />
                         </div>
                     </div>
-                    <MesssageList />
+                    <MesssageList profile={this.profile} readOnly />
                 </div>
             </div>
         )
     }
 }
 const mapStateToProps = ({ users, event }) => ({
-    user: users.user,
-    event: event.event
+    user: users?.user,
+    event: event?.event
 });
 export default connect(mapStateToProps)(DetailEvent);
