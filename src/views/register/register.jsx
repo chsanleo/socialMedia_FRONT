@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { userService } from '../../services/userService.js';
 import { validations } from '../../utils/validations.js';
 import { utils } from '../../utils/utils.js';
@@ -37,14 +39,16 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div className="centerInfo">
+            <div className="loginPage">
                 <form onSubmit={this.pressRegister}>
                     <h3>Do you want join us?</h3>
                     <span className="errorText">{this.state.msgError}</span>
                     <input type="text" placeholder="Email" name="email"
                         value={this.state.email} onChange={this.handleChange}></input>
                     <button type="submit">Ask for ur Access!</button>
-                </form>
+                </form><br /><br />
+                <img src="./fondo.png" alt="fondo" /><br /><br />
+                <Link to="/contactMail"><img src="./contactUs.png" width="50px" alt="Contact Us" /></Link><br />
             </div>
         )
     }
