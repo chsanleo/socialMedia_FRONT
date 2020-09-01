@@ -13,6 +13,7 @@ import Logout from './views/logout/logout.jsx';
 import ForgotPass from './views/forgotPass/forgotPass.jsx';
 import CreateEvent from './views/createEvent/createEvent.jsx';
 import DetailEvent from './views/detailEvent/detailEvent.jsx';
+import ProfileExt from './views/profileExt/profileExt.jsx'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/forgotPass' exact component={ForgotPass} />
         <Route path='/createevent' exact component={CreateEvent} />
         <Route path='/detailEvent' exact component={DetailEvent}/>
+        <Route path='/profileExt' exact component={ProfileExt}/>
 
         <Route component={Page404} />
       </Switch>
