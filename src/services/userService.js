@@ -1,15 +1,15 @@
 import { userRepository } from '../repositories/userRepository.js';
-import { logoutAction, loginAction, updateUserAction } from '../redux/actions/user.js';
+import { logoutAction, loginAction, updateUserAction, extUserAction } from '../redux/actions/user.js';
 
 export const userService = {
-    signup, login, getProfile, logout, forgotPass, update
+    signup, login, getProfile, logout, forgotPass, update, getExtProfile
 };
 
 function signup(email) {
     userRepository.signup(email)
         .then()
         .catch(error => console.log(error));
-};
+}; 
 
 function login(credentials) {
     userRepository.login(credentials)
@@ -48,6 +48,13 @@ function update(user) {
     userRepository.updateUser(user)
         .then()
         .catch(error => console.log(error));
-        updateUserAction(user);
+    updateUserAction(user);
 };
+
+function getExtProfile(user) {
+    userRepository.getProfile(user)
+    .then(res => extUserAction(res))
+    .catch(error => console.log(error));
+};
+
 
