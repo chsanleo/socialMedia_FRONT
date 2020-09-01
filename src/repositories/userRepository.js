@@ -32,7 +32,7 @@ async function signup(email) {
 };
 async function getProfile(user) {
     try {
-        const res = await axios.get(`user/`, user);
+        const res = await axios.post(`user/profile`, user);
         return res.data;
     }
     catch (error) {

@@ -1,4 +1,4 @@
-import { LOGIN, TOKEN, LOGOUT, UPDATE_USER } from "../types/user.js";
+import { LOGIN, TOKEN, LOGOUT, UPDATE_USER, EXT_USER } from "../types/user.js";
 import store from '../store.js';
 
 export const loginAction = async (loggedUser) => {
@@ -26,7 +26,16 @@ export const updateUserAction = async (user) =>{
         console.error(error);
     }
 };
-
+export const extUserAction = async (user) =>{
+    try {
+        store.dispatch({
+            type: EXT_USER,
+            payload: user
+        });
+    } catch (error) {
+        console.error(error);
+    }
+};
 export const logoutAction = async () => {
 
     store.dispatch({

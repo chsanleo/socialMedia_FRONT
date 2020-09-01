@@ -34,6 +34,7 @@ class Landing extends React.Component {
     handleChange = (ev) => {
         this.setState({ [ev.target.name]: ev.target.type === 'string' ? +ev.target.value : ev.target.value });
     }
+
     setEvent = (event) => {
         eventService.detailEvent(event);
         this.props.history.push('/detailEvent');
