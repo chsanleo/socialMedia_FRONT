@@ -43,6 +43,12 @@ class MesssageList extends React.Component {
     }*/
     //#endregion
 
+    deleteMessage(id) {
+        let messageDelete = { _id: id }
+        messageService.deleteMessage(messageDelete);
+    }
+
+
     cleanDate(date) {
         return (date.split('T')[0]);
     }
@@ -52,12 +58,19 @@ class MesssageList extends React.Component {
             <div>
                 {this.props.messageList?.map(message => (
                     <div className="messageEvent" key={message._id}>
+                        {
+                        message.owner[0].id === this.props.user.id ?
+                            <img src="./delete.png" onClick={e => this.deleteMessage(message._id)}
+                                width="20px" alt="deletePic" />
+                            : ''
+                            }
                         <img className="profilePicList"
                             src={message.owner[0].pic_path !== '' ? message.owner[0].pic_path : './defaultProfile.png'}
                             onClick={e => this.props.profile(message.owner[0])}
                             alt="profilePic"
                             title={message.owner[0].username} />
                         &nbsp;&nbsp;{this.cleanDate(message.createdAt)}&nbsp;by&nbsp;{message.owner[0].username}
+                        {this.haveDelete}
                         <div>
                             {message.body}<br />
                             {message.likes.length}
