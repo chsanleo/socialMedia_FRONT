@@ -1,0 +1,15 @@
+.landing{
+    display: flex;
+
+    .event{
+        display: inline-block;
+        flex-direction: row;
+        display: float;
+        width: 80%;
+        padding-top: 1em;
+    }
+    .options{
+        padding: 1em;
+        padding-left: 25%;
+    }
+}

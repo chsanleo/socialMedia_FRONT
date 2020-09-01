@@ -1,0 +1,34 @@
+.navLeft{
+    padding-top: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+    height: 900px;
+    text-align: center;
+    background-image: linear-gradient(yellow, red);
+    
+    .info{
+        text-align: left;
+        h3{
+            text-align: center;
+            padding-bottom: 2em;
+            font-weight: bold;
+            color:var(--text-color);
+        }
+    }
+
+    .listMenu{
+ 
+        list-style:none;
+        text-align: center;
+        padding-left: 0em;
+        li{
+            padding: 1em;
+        }
+    }
+}
+
+.profilePicLeft{
+    width:200px;
+    height:200px;
+    border-radius: 20%;
+}
