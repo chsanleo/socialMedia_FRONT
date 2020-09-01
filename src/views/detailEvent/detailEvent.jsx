@@ -20,6 +20,7 @@ class DetailEvent extends React.Component {
         this.dislike = this.dislike.bind(this);
         this.join = this.join.bind(this);
         this.profile = this.profile.bind(this);
+        this.deleteEvent = this.deleteEvent.bind(this);
     }
 
     componentDidMount() {
@@ -109,7 +110,13 @@ class DetailEvent extends React.Component {
 
     //#region Delete
     deleteEvent() {
-        console.log('delete')
+        let event = { _id: this.props.event._id };
+        eventService.deleteEvent(event);
+        eventService.getAllEvents();
+        setTimeout(() => {
+            this.props.history.push('/init');
+        }, 1000);
+
     }
     //#endregion
 
