@@ -64,6 +64,7 @@ $ npm start
 
 + Add some features to give to the user more options.
 + Improve the design to something more near to UX.
++ Use a rich text in some text input.
 
 
 **About features**
