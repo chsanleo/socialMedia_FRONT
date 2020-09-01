@@ -114,7 +114,7 @@ class CreateEvent extends React.Component {
                     <input type="text" name="title" value={this.state.title || ''}
                                     onChange={this.handleChange}></input><br /></p>
                             <p><label>Body</label>&nbsp;
-                    <input type="text" name="body" value={this.state.body || ''}
+                    <input type="text" className="longInput" name="body" value={this.state.body || ''}
                                     onChange={this.handleChange}></input><br /></p>
 
                             <label>Date of event: </label>&nbsp;
