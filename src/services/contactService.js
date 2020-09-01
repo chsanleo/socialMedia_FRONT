@@ -4,8 +4,8 @@ export const contactService = {
     createContactMail
 };
 
-function createContactMail(contactMail){
+function createContactMail(contactMail) {
     contactRepository.createContactUs(contactMail)
-    .then()
-    .catch(error=>{console.log(error)});
+        .then()
+        .catch(error => { console.log(error) });
 };
