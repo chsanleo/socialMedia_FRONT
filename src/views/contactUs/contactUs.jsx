@@ -62,9 +62,12 @@ class ContactUs extends React.Component {
                     <h3>What do u want say to us?</h3>
                     <span className="errorText">{this.state.msgError}</span><br />
                     <form onSubmit={this.pressSend}>
-                        <input placeholder="Your email" type="text" name="email" value={this.state.email} onChange={this.handleChange}></input><br />
-                        <input placeholder="Subject" type="text" name="subject" value={this.state.subject} onChange={this.handleChange}></input><br />
-                        <input placeholder="What do you want say to us" type="text" name="message" value={this.state.message} onChange={this.handleChange}></input><br />
+                        <label>Contact email: </label><br />
+                        <input placeholder="Your email" type="text" name="email" value={this.state.email} onChange={this.handleChange} /><br /><br />
+                        <label>Subject: </label><br />
+                        <input placeholder="Subject" type="text" name="subject" value={this.state.subject} onChange={this.handleChange} /><br /><br />
+                        <label>Your message: </label><br />
+                        <input placeholder="What do you want say to us" className="longInput" type="text" name="message" value={this.state.message} onChange={this.handleChange}></input><br /><br />
                         <button type="submit">ENVIAR!</button>
                         {this.returnApp()}
                     </form>
