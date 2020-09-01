@@ -52,7 +52,11 @@ class MesssageList extends React.Component {
             <div>
                 {this.props.messageList?.map(message => (
                     <div className="messageEvent" key={message._id}>
-                        <img className="profilePicList" src={message.owner[0].pic_path} alt="profilePic" title={message.owner[0].username} />
+                        <img className="profilePicList"
+                            src={message.owner[0].pic_path !== '' ? message.owner[0].pic_path : './defaultProfile.png'}
+                            onClick={e => this.props.profile(message.owner[0])}
+                            alt="profilePic"
+                            title={message.owner[0].username} />
                         &nbsp;&nbsp;{this.cleanDate(message.createdAt)}&nbsp;by&nbsp;{message.owner[0].username}
                         <div>
                             {message.body}<br />
@@ -61,7 +65,7 @@ class MesssageList extends React.Component {
                         </div>
                     </div>
                 ))}
-                <CreateMessage readOnly />
+                <CreateMessage />
             </div>
 
         )
