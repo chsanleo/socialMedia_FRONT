@@ -2,7 +2,8 @@ import { eventRepository } from '../repositories/eventRepository.js';
 import { addEventListAction, addEventAction } from '../redux/actions/event.js';
 
 export const eventService = {
-    getAllEvents, createEvent, joinEvent, likeEvent, dislikeEvent, detailEvent
+    getAllEvents, createEvent, joinEvent, likeEvent,
+     dislikeEvent, detailEvent, deleteEvent
 };
 
 function getAllEvents(eventType) {
@@ -38,3 +39,9 @@ function dislikeEvent(userIntoEvent) {
 function detailEvent(event) {
     addEventAction(event);
 };
+
+function deleteEvent(event) {
+    eventRepository.deleteEvent(event)
+        .then()
+        .catch(error => console.log(error));
+}
