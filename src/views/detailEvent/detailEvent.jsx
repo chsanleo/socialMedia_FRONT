@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import './detailEvent.scss';
 
 import NavLeft from '../../components/navLeft/navLeft.jsx';
+import MesssageList from '../../components/messageList/messageList.jsx';
+
 import { eventService } from '../../services/eventService.js';
 import { messageService } from '../../services/messageService.js';
 import { utils } from '../../utils/utils.js';
@@ -12,8 +14,7 @@ class DetailEvent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-        }
+        this.state = {}
 
         this.addLike = this.addLike.bind(this);
         this.dislike = this.dislike.bind(this);
@@ -29,11 +30,9 @@ class DetailEvent extends React.Component {
          }*/
         if (utils.isNullOrEmpty(this.props.user.username)) { this.props.history.push('/profile'); }
         
-        const eventMessage = {
-            evetnParentId: this.props.event.id
-        };
-
-        messageService.getAllMessages(eventMessage);
+        this.uploadMessages()
+        //let eventMessage = { parentEvent: this.props.event._id };
+       // messageService.getAllMessages(eventMessage);
     }
 
     //#region Beauty Helpers 
@@ -96,6 +95,12 @@ class DetailEvent extends React.Component {
     }
     //#endregion
 
+
+    uploadMessages(){
+        let eventMessage = { parentEvent: this.props.event._id };
+        messageService.getAllMessages(eventMessage);
+    }
+
     //#region External User Profile
     profile(user) {
         console.log("dentroProfile" + user)
@@ -123,7 +128,7 @@ class DetailEvent extends React.Component {
                     <div className="formsFormat">
                         <div>
                             <img src={this.IMGlink()} width="200px" alt="eventPhoto" /><br /><br /><br />
-                            <p>{this.haveLike()}&nbsp;&nbsp;&nbsp;Likes: {this.numberLikes()}</p> <br /><br />
+                            <p>{this.haveLike()}&nbsp;&nbsp;&nbsp;Likes: {this.numberLikes()}</p> <br />
                             <p>User join this activity : {this.numberJoins()} </p>
                             <div >
                                 {
@@ -148,6 +153,7 @@ class DetailEvent extends React.Component {
                             <br />
                         </div>
                     </div>
+                    <MesssageList/>
                 </div>
             </div>
         )

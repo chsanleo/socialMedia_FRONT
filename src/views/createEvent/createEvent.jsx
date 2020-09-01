@@ -19,7 +19,7 @@ class CreateEvent extends React.Component {
         super(props);
 
         this.state = {
-            owner: '', title: '', body: '', pic_path: '',
+            title: '', body: '', pic_path: '',
             type: '', date: new Date(), city: '', country: '',
             msgError: ''
         }
@@ -35,7 +35,6 @@ class CreateEvent extends React.Component {
         if (utils.isNullOrEmpty(this.props.user.username)) { this.props.history.push('/profile'); }
 
         this.setState({
-            owner: this.props.user,
             country: this.props.user.country,
             city: this.props.user.city
         });
@@ -83,7 +82,6 @@ class CreateEvent extends React.Component {
             this.setState({ msgError: error });
             return;
         }
-        console.log(event);
         try {
             eventService.createEvent(event);
             setTimeout(() => {
@@ -116,7 +114,7 @@ class CreateEvent extends React.Component {
                     <input type="text" name="title" value={this.state.title || ''}
                                     onChange={this.handleChange}></input><br /></p>
                             <p><label>Body</label>&nbsp;
-                    <input type="text" name="body" value={this.state.body || ''}
+                    <input type="text" className="longInput" name="body" value={this.state.body || ''}
                                     onChange={this.handleChange}></input><br /></p>
 
                             <label>Date of event: </label>&nbsp;

@@ -17,7 +17,7 @@ class Profile extends React.Component {
         super(props);
 
         this.state = {
-            username: '', name: '', surname: '', birthdate: '',
+            username: '', name: '', surname: '', birthdate: new Date(),
             pic_path: '', address: '', email: '', city: '',
             country: '', hobbies: '', job: '',
             msgError: ''
@@ -37,7 +37,7 @@ class Profile extends React.Component {
             username: this.props.user.username,
             name: this.props.user.name,
             surname: this.props.user.surname,
-            birthdate: this.props.user.birthdate,
+            birthdate: this.props.user.birthdate !== '' ? Date.parse(this.props.user.birthdate) : new Date(),
             pic_path: this.props.user.pic_path,
             address: this.props.user.address,
             email: this.props.user.email,
@@ -57,7 +57,7 @@ class Profile extends React.Component {
         this.setState({ birthdate: date });
     }
     isIMG() {
-        if(utils.isNullOrEmpty(this.state.pic_path)){
+        if (utils.isNullOrEmpty(this.state.pic_path)) {
             return (<img src='defaultProfile.png' width="200px" alt="eventPhoto" />);
         }
         let url = this.state.pic_path.split('.');
@@ -81,7 +81,7 @@ class Profile extends React.Component {
             surname: this.state.surname,
             pic_path: this.state.pic_path,
             address: this.state.address,
-            birthdate :this.state.birthdate,
+            birthdate: this.state.birthdate,
             email: this.state.email,
             city: this.state.city,
             country: this.state.country != null ? this.state.country : this.props.user.country,
@@ -119,7 +119,7 @@ class Profile extends React.Component {
                             <br />
                         </div>
                         <div>
-                        <span className="errorText">{this.state.msgError}</span>
+                            <span className="errorText">{this.state.msgError}</span>
                             <p><label>Username</label> &nbsp;
                     <input type="text" name="username" value={this.state.username || ''}
                                     onChange={this.handleChange}></input><br /></p>
@@ -131,12 +131,12 @@ class Profile extends React.Component {
                                     onChange={this.handleChange}></input><br /></p>
                             <label>Bith date</label>&nbsp;
                          <DatePicker
-                                    selected={this.state.birthdate}
-                                    onChange={date => this.setDate(date)}
-                                    maxDate={new Date()}
-                                    name="date"
-                                    dateFormat="dd/MM/yyyy"
-                                /><p></p>
+                                selected={this.state.birthdate}
+                                onChange={date => this.setDate(date)}
+                                maxDate={new Date()}
+                                name="date"
+                                dateFormat="dd/MM/yyyy"
+                            /><p></p>
                             <p><label>Address</label>&nbsp;
                     <input type="text" name="address" value={this.state.address || ''}
                                     onChange={this.handleChange}></input><br /></p>

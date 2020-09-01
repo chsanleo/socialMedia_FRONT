@@ -4,8 +4,10 @@
 .linkImg{
 	width: 40px;
 }
+label{
+	color:var(--textDiscret-color);
+}
 .centerInfo {
-
 	margin-top: 3em;
 	margin-left: auto;
 	margin-right: auto;
@@ -21,6 +23,10 @@
 			}
 		}
 	}
+}
+.longInput{
+	width: 450px;
+	height: 98px;
 }
 
 .leftMenu{
