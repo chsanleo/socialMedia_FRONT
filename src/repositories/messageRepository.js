@@ -7,7 +7,6 @@ export const messageRepository = {
 
 async function getAllMessages(eventMessages) {
     try {
-        console.log(eventMessages)
         const res = await axios.post(`msg/messages`, eventMessages);
         return res.data;
     }
