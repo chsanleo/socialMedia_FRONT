@@ -16,7 +16,7 @@ class MesssageList extends React.Component {
         }
     }
     //#region Likes
-    haveLike(message) {/*
+    haveLike() {/*
         if (message.likes.length !== 0) {
             if (message.likes.find(element => element.id === this.props.user.id)) {
                 return (<img className="linkImg" src="./dislike.png" onClick={this.dislike(message._id)} alt="dislikePic" />);
@@ -52,13 +52,12 @@ class MesssageList extends React.Component {
             <div>
                 {this.props.messageList?.map(message => (
                     <div className="messageEvent" key={message._id}>
-
                         <img className="profilePicList" src={message.owner[0].pic_path} alt="profilePic" title={message.owner[0].username} />
                         &nbsp;&nbsp;{this.cleanDate(message.createdAt)}&nbsp;by&nbsp;{message.owner[0].username}
                         <div>
                             {message.body}<br />
                             {message.likes.length}
-                            {this.haveLike(message)}
+                            {this.haveLike}
                         </div>
                     </div>
                 ))}
