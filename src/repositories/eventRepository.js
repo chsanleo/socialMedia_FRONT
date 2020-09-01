@@ -18,7 +18,6 @@ async function getAllEvents(type) {
         return res.data;
     }
     catch (error) {
-        console.log(error)
         throw Error("Could not get any event.");
     }
 };
@@ -29,7 +28,6 @@ async function createEvent(event) {
         return res.data;
     }
     catch (error) {
-        console.log(error)
         throw Error("Could not create event.");
     }
 };
@@ -39,8 +37,7 @@ async function joinEvent(userIntoEvent) {
         return res.data;
     }
     catch (error) {
-        console.log(error)
-        throw Error("Could not create event.");
+        throw Error("Could not join event.");
     }
 };
 async function likeEvent(userIntoEvent) {
@@ -49,8 +46,7 @@ async function likeEvent(userIntoEvent) {
         return res.data;
     }
     catch (error) {
-        console.log(error)
-        throw Error("Could not create event.");
+        throw Error("Could not like event.");
     }
 };
 async function dislikeEvent(userIntoEvent) {

@@ -30,10 +30,8 @@ class DetailEvent extends React.Component {
             this.props.history.push('/');
          }*/
         if (utils.isNullOrEmpty(this.props.user.username)) { this.props.history.push('/profile'); }
-        
+
         this.uploadMessages()
-        //let eventMessage = { parentEvent: this.props.event._id };
-       // messageService.getAllMessages(eventMessage);
     }
 
     //#region Beauty Helpers 
@@ -97,7 +95,7 @@ class DetailEvent extends React.Component {
     //#endregion
 
 
-    uploadMessages(){
+    uploadMessages() {
         let eventMessage = { parentEvent: this.props.event._id };
         messageService.getAllMessages(eventMessage);
     }
@@ -144,7 +142,6 @@ class DetailEvent extends React.Component {
                                             onClick={this.profile({ item })} alt="joinPic" title={item.username} />
                                     ))
                                 }
-
                             </div>
                             {this.haveJoin()}<br />
                         </div>
@@ -160,7 +157,7 @@ class DetailEvent extends React.Component {
                             <br />
                         </div>
                     </div>
-                    <MesssageList/>
+                    <MesssageList />
                 </div>
             </div>
         )
