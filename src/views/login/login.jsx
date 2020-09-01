@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { userService } from '../../services/userService.js';
 
 import { validations } from '../../utils/validations.js';
@@ -61,13 +61,16 @@ class Login extends React.Component {
                             value={this.state.numExpedient} onChange={this.handleChange}></input>
                         <input className="inputs" type="password" placeholder="Password" name="password"
                             value={this.state.password} onChange={this.handleChange}></input><br />
-                        <NavLink to="/forgotPass">I forgot my password</NavLink>
+                        <Link to="/forgotPass">I forgot my password</Link>
                         <br />
                         <button type="submit">LogIn!</button>
-                    </form>
+                    </form><br />
+                    
+                    <p>or</p>
+                    <Link to="/register">Need register</Link>
                 <br /><br /><br />
                  <img src="./fondo.png" alt="fondo" /><br/><br/>
-                 <NavLink to="/contactMail"><img src="./contactUs.png" width="50px" alt="Contact Us"/></NavLink><br/>
+                 <Link to="/contactMail"><img src="./contactUs.png" width="50px" alt="Contact Us"/></Link><br/>
             </div>
 
         )
