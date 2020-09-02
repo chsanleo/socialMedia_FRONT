@@ -107,7 +107,6 @@ class Profile extends React.Component {
     render() {
         return (
             <div className="centerInfo">
-
                 <form onSubmit={this.pressUpdate}>
                     <h2>Personal information</h2>
                     <div className="formsFormat">
