@@ -1,0 +1,16 @@
+.textBlock {
+    width: 500px;
+    margin: 50px auto;
+
+  .draft-editor-wrapper {
+    border: 1px solid #ccc;
+    min-height: 150px;
+  }
+  input{
+    background-color: white;
+    color: black;
+    border: 2px solid var(--textDiscret-color);
+    border-radius: 15%;
+    margin: 0.1em;
+  }
+}

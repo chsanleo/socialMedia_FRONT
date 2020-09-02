@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import NavLeft from '../../components/navLeft/navLeft.jsx';
 import CountryList from '../../components/countryList/countryList.jsx';
 import TypesList from '../../components/typesList/typesList.jsx';
+import CreateMessage from '../../components/createMessage/createMessage.jsx';
 
 import { validations } from '../../utils/validations.js';
 import { utils } from '../../utils/utils.js';
@@ -24,6 +25,7 @@ class CreateEvent extends React.Component {
             msgError: ''
         }
         this.handleChange = this.handleChange.bind(this);
+        this.setText = this.setText.bind(this);
     }
 
     handleChange = (ev) => {
@@ -62,9 +64,14 @@ class CreateEvent extends React.Component {
             default: return (<img src='Activities.png' width="200px" alt="eventPhoto" />);
         }
     }
+    //#region text
+    setText(text) {
+        text = utils.cleanHTML(text);
 
-    pressCreate = (ev) => {
-        ev.preventDefault();
+        if (!utils.isNullOrEmpty(text)) { this.setState({ body: text }); }
+    }
+    //#endregion
+    pressCreate() {
         let event = {
             owner: this.props.user,
             title: this.state.title,
@@ -95,9 +102,8 @@ class CreateEvent extends React.Component {
     render() {
         return (
             <div className="createEvent">
-            <div className="leftMenu"><NavLeft /></div>
-            <div className="centerInfo" >
-                <form onSubmit={this.pressCreate}>
+                <div className="leftMenu"><NavLeft /></div>
+                <div className="centerInfo" >
                     <h2>Event information</h2>
                     <div className="formsFormat">
                         <div className="image">
@@ -113,19 +119,18 @@ class CreateEvent extends React.Component {
                             <p><label>Title</label>&nbsp;
                     <input type="text" name="title" value={this.state.title || ''}
                                     onChange={this.handleChange}></input><br /></p>
-                            <p><label>Body</label>&nbsp;
-                    <input type="text" className="longInput" name="body" value={this.state.body || ''}
-                                    onChange={this.handleChange}></input><br /></p>
+                            <h3>Describe the event:</h3>
+                            <CreateMessage setText={this.setText} readOnly />
 
                             <label>Date of event: </label>&nbsp;
                                 <DatePicker
-                                    selected={this.state.date}
-                                    onChange={date => this.setDate(date)}
-                                    minDate={new Date()}
-                                    name="date"
-                                    dateFormat="dd/MM/yyyy"
-                                />
-                            
+                                selected={this.state.date}
+                                onChange={date => this.setDate(date)}
+                                minDate={new Date()}
+                                name="date"
+                                dateFormat="dd/MM/yyyy"
+                            />
+
                             <p><label>City</label>&nbsp;
                     <input type="text" name="city" value={this.state.city || ''}
                                     onChange={this.handleChange}></input><br /></p>
@@ -134,11 +139,11 @@ class CreateEvent extends React.Component {
                             <p><label>Type: </label> {this.props.user.hobbies}<br />
                                 <TypesList setHobby={this.setHobby} readOnly /></p>
                             <br />
-                            <button type="submit">Create Event!</button><br /></div>
+                            <button onClick={e => { this.pressCreate() }}>Create Event!</button><br /></div>
                     </div>
-                </form>
-                <NavLink to="/init" ></NavLink>
-            </div>
+
+                    <NavLink to="/init" ></NavLink>
+                </div>
             </div>
         )
     }

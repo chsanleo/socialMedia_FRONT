@@ -1,7 +1,19 @@
 .messageEvent{
     border: 1px black solid;
     border-radius: 15px;
+    margin-bottom: 1em;
+    
     div{
         padding-left: 2em;
+
+        img{
+            width: 20px;
+        }
     }
+    .optionsMssg{
+        margin-left: 70%;
+        width: 20px;
+        right: 0;
+    }
+
 }
