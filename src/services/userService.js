@@ -48,9 +48,13 @@ function update(user) {
     userRepository.updateUser(user)
         .then()
         .catch(error => console.log(error));
-    let userLogged = { id: user.id }
-    userRepository.getProfile(userLogged).then(res => updateUserAction(res))
-        .catch(error => console.log(error));
+
+    setTimeout(() => {
+        let userLogged = { id: user.id }
+        userRepository.getProfile(userLogged).then(res => updateUserAction(res))
+            .catch(error => console.log(error));
+    }, 2000);
+
 
 };
 
