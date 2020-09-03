@@ -67,7 +67,7 @@ class Login extends React.Component {
                     </form><br />
                     
                     <p>or</p>
-                    <Link to="/register">Need register</Link>
+                    <Link to="/register">I want enjoy the App</Link>
                 <br /><br /><br />
                  <img src="./fondo.png" alt="fondo" /><br/><br/>
                  <Link to="/contactMail"><img src="./contactUs.png" width="50px" alt="Contact Us"/></Link><br/>
