@@ -27,7 +27,7 @@ class NavLeft extends React.Component {
                             <h3>{this.props.userL.username !== '' ? this.props.userL.username : '<insert your username>'}</h3>
                             <p>{this.props.userL.numFriends} friends now.</p>
                             <p>{this.props.userL.pendingFriends} pending request.</p>
-                            <p>Your hobby is :{this.props.userL.hobbies}</p>
+                            <p>Your hobby is :  {this.props.userL.hobbies}</p>
                         </div>
                     </div>
 

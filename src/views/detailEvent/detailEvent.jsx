@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Parser from 'html-react-parser';
 
 import './detailEvent.scss';
 
 import NavLeft from '../../components/navLeft/navLeft.jsx';
 import MesssageList from '../../components/messageList/messageList.jsx';
+import CreateMessage from '../../components/createMessage/createMessage.jsx';
 
 import { eventService } from '../../services/eventService.js';
 import { messageService } from '../../services/messageService.js';
@@ -15,13 +17,17 @@ class DetailEvent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            user:{},
+            eventId: 0
+        }
 
         this.addLike = this.addLike.bind(this);
         this.dislike = this.dislike.bind(this);
         this.join = this.join.bind(this);
         this.profile = this.profile.bind(this);
         this.deleteEvent = this.deleteEvent.bind(this);
+        this.setText = this.setText.bind(this);
     }
 
     componentDidMount() {
@@ -32,7 +38,11 @@ class DetailEvent extends React.Component {
          }*/
         if (utils.isNullOrEmpty(this.props.user.username)) { this.props.history.push('/profile'); }
 
-        this.uploadMessages()
+        this.uploadMessages();
+        this.setState({
+            user : this.props.user,
+            eventId : this.props.event.id
+        })
     }
 
     //#region Beauty Helpers 
@@ -121,6 +131,21 @@ class DetailEvent extends React.Component {
     }
     //#endregion
 
+    //#region text
+    setText(text){      
+        text = utils.cleanHTML(text);  
+        if (!utils.isNullOrEmpty(text)) {
+            let message = {
+                owner: this.props.user, 
+                parentMessage:0,
+                body: text,
+                parentEvent: this.props.event._id,
+            };
+            messageService.createMessage(message);
+        }
+    }
+    //#endregion
+
     //#region Update
     updateEvent() {
         console.log('update')
@@ -156,11 +181,13 @@ class DetailEvent extends React.Component {
                             <p><label>Type: </label> {this.props.event.type}</p>
                         </div>
                         <div>
-                            <p width="25%"><label>Body:</label>&nbsp;{this.props.event.body}</p>
+                            <p width="25%"><label>Body:</label>&nbsp;{Parser(this.props.event.body)}</p>
                             <br />
                         </div>
                     </div>
                     <MesssageList profile={this.profile} readOnly />
+                    <h3 align="center">Add a message!</h3>
+                    <CreateMessage setText={this.setText} readOnly />
                 </div>
             </div>
         )

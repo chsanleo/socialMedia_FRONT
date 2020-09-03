@@ -107,7 +107,6 @@ class Profile extends React.Component {
     render() {
         return (
             <div className="centerInfo">
-
                 <form onSubmit={this.pressUpdate}>
                     <h2>Personal information</h2>
                     <div className="formsFormat">
@@ -129,7 +128,7 @@ class Profile extends React.Component {
                             <p><label>Surname</label>&nbsp;
                     <input type="text" name="surname" value={this.state.surname || ''}
                                     onChange={this.handleChange}></input><br /></p>
-                            <label>Bith date</label>&nbsp;
+                            <label>Birthdate</label>&nbsp;
                          <DatePicker
                                 selected={this.state.birthdate}
                                 onChange={date => this.setDate(date)}
@@ -153,8 +152,11 @@ class Profile extends React.Component {
                             <br />
                         </div>
                     </div>
-                    <button type="submit">Update profile!</button><br />
+                    <div className="buttonUpload">
+                    <button type="submit">Update profile!</button>
+                    </div><br />
                     <NavLink to="/forgotPass">Change my password</NavLink>
+                    <NavLink to="/init">Return to home</NavLink>
                 </form>
             </div>
         )

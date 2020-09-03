@@ -34,10 +34,19 @@ $ sequelize db:seed:all
 + take a look to the /config/ files, where u need to take the samples and create ur own config files
 
 + clone the front repository
+
 ```
 $ git clone https://github.com/chsanleo/socialMedia_FRONT
 ```
+
++ and install the packages,
+
+```
+$ npm install
+```
+
 + run both, back and front in the source folder
+
 ```
 $ npm start
 ```
