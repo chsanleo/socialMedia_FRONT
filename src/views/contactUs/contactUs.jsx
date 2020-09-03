@@ -75,11 +75,10 @@ class ContactUs extends React.Component {
                         <input placeholder="Subject" type="text" name="subject" value={this.state.subject} onChange={this.handleChange} /><br /><br />
                         <label>Your message: </label><br />
                         <input placeholder="What do you want say to us" className="longInput" type="text" name="message" value={this.state.message} onChange={this.handleChange}></input><br /><br />
-                        <button type="submit">ENVIAR!</button>
+                        <button className="buttonAccess"  type="submit">ENVIAR!</button>
                         {this.returnApp()}
                     </form>
                 </div>
-                {/* if logged return to init */}
             </div>
         );
     }
