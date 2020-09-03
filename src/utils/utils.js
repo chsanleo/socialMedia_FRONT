@@ -23,6 +23,5 @@ function cleanHTML(html) {
         newHtml = newHtml.replace(item, 'have a nice day');
     }
 
-
     return newHtml;
 };
