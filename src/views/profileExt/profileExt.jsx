@@ -22,7 +22,16 @@ class ProfileExt extends React.Component {
                     <h2>Profile of {this.props.userExt.username}</h2>
                     <div className="formsFormat">
                         <div>
-                        <img className="profilePicLeft" src={this.props.userExt.pic_path===''?'defaultProfile.png':this.props.userExt.pic_path} width="200px" alt="eventPhoto" />
+                            <img className="profilePicLeft"
+                                src={
+                                    this.props.userExt.pic_path === '' ?
+                                        'defaultProfile.png'
+                                        :
+                                        this.props.userExt.pic_path
+                                }
+                                width="200px"
+                                alt="eventPhoto" />
+                            <p><label>Friends: </label>&nbsp;{this.props.userExt.numFriends}</p>
                             {/*friends*/}
                         </div>
                         <div>

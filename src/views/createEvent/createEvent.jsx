@@ -120,8 +120,7 @@ class CreateEvent extends React.Component {
                     <input type="text" name="title" value={this.state.title || ''}
                                     onChange={this.handleChange}></input><br /></p>
                             <h3>Describe the event:</h3>
-                            <CreateMessage setText={this.setText} readOnly />
-
+                            <CreateMessage className="descriptInput" setText={this.setText} readOnly />
                             <label>Date of event: </label>&nbsp;
                                 <DatePicker
                                 selected={this.state.date}
@@ -129,7 +128,7 @@ class CreateEvent extends React.Component {
                                 minDate={new Date()}
                                 name="date"
                                 dateFormat="dd/MM/yyyy"
-                            />
+                            /><br /><br />
 
                             <p><label>City</label>&nbsp;
                     <input type="text" name="city" value={this.state.city || ''}
@@ -139,7 +138,9 @@ class CreateEvent extends React.Component {
                             <p><label>Type: </label> {this.props.user.hobbies}<br />
                                 <TypesList setHobby={this.setHobby} readOnly /></p>
                             <br />
-                            <button onClick={e => { this.pressCreate() }}>Create Event!</button><br /></div>
+                            <div className="buttonUpload">
+                                <button onClick={e => { this.pressCreate() }}>Create Event!</button><br /></div>
+                        </div>
                     </div>
 
                     <NavLink to="/init" ></NavLink>
