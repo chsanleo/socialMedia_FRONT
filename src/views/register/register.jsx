@@ -47,7 +47,7 @@ class Register extends React.Component {
                         value={this.state.email} onChange={this.handleChange}/>
                     <button className="buttonAccess" type="submit">Ask for ur Access!</button>
                 </form><br /><br />
-                <Link exact to="/">Return</Link><br /><br />
+                <Link exact to="/">Return Login</Link><br /><br />
                 <img src="./fondo.png" alt="fondo" /><br /><br />
                 <Link to="/contactMail"><img src="./contactUs.png" width="50px" alt="Contact Us" /></Link><br />
             </div>
