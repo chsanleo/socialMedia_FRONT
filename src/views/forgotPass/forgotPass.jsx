@@ -2,6 +2,7 @@ import React from 'react';
 import { userService } from '../../services/userService.js';
 import { validations } from '../../utils/validations.js';
 import { utils } from '../../utils/utils.js';
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor(props) {
@@ -41,10 +42,10 @@ class Login extends React.Component {
                     <p>Use your email to recover it.</p>
                     <span className="errorText">{this.state.msgError}</span>
                     <input className="inputs" type="text" placeholder="Email" name="email"
-                        value={this.state.password} onChange={this.handleChange}></input><br />
-                    <br />
-                    <button type="submit">Recover Account!</button>
+                        value={this.state.password} onChange={this.handleChange}/>&nbsp;&nbsp;
+                    <button className="buttonAccess" type="submit">Recover Password!</button>
                 </form>
+                <br/><Link exact to="/">Return Login</Link><br /><br />
             </div>
         )
     }
