@@ -9,7 +9,7 @@ function signup(email) {
     userRepository.signup(email)
         .then()
         .catch(error => console.log(error));
-}; 
+};
 
 function login(credentials) {
     userRepository.login(credentials)
@@ -48,13 +48,16 @@ function update(user) {
     userRepository.updateUser(user)
         .then()
         .catch(error => console.log(error));
-    updateUserAction(user);
+    let userLogged = { id: user.id }
+    userRepository.getProfile(userLogged).then(res => updateUserAction(res))
+        .catch(error => console.log(error));
+
 };
 
 function getExtProfile(user) {
     userRepository.getProfile(user)
-    .then(res => extUserAction(res))
-    .catch(error => console.log(error));
+        .then(res => extUserAction(res))
+        .catch(error => console.log(error));
 };
 
 
