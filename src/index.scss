@@ -1,25 +1,25 @@
 .errorText{
-  color:tomato;
+  color:var(--error-color);
 }
 
 
 .buttonUpload {
 	@keyframes gradient {
 		0% {
-		  background: radial-gradient(circle at center,var(--background-color) 0%, #fff 0%, #fff 100%);
+		  background: radial-gradient(circle at center,var(--background-color) 0%, var(--base-color) 0%, var(--base-color) 100%);
 		}
 		25% {
-		  background: radial-gradient(circle at center,var(--background-color) 24%, #fff 25%, #fff 100%);
+		  background: radial-gradient(circle at center,var(--background-color) 24%, var(--base-color) 25%, var(--base-color) 100%);
 		}
 		50% {
-		  background: radial-gradient(circle at center, var(--background-color) 49%, #fff 50%, #fff 100%);
+		  background: radial-gradient(circle at center, var(--background-color) 49%, var(--base-color) 50%, var(--base-color) 100%);
 		}
 		75% {
-		  background: radial-gradient(circle at center, var(--background-color) 74%, #fff 75%, #fff 100%);
+		  background: radial-gradient(circle at center, var(--background-color) 74%, var(--base-color) 75%, var(--base-color) 100%);
 		}
 		100% {
-		  color: #fff;
-		  background: radial-gradient(circle at center,var(--background-color) 99%, #fff 100%, #fff 100%);
+		  color: var(--base-color);
+		  background: radial-gradient(circle at center,var(--background-color) 99%, var(--base-color) 100%, var(--base-color) 100%);
 		}
 	  }
 
@@ -30,18 +30,18 @@
 		height: 60px;
 		border: none;
 		border-radius: 5px;
-		background: #fff;
+		background: var(--base-color);
 		font-weight: bold;
 		font-size: 1.1em;
-		color: #666;
-		box-shadow: 0 6px 6px #06f;
+		color: var(--borderDiscret-color);
+		box-shadow: 0 6px 6px var( --shadow-color);
 		outline: none;
 	  }
 	  button:active {
 		/* set time duration to your needs */
 		animation: gradient 500ms;
 		background: var(--background-color);
-		color: #fff;
+		color: var(--base-color);
 		box-shadow: none;
 	  }
 	
@@ -52,7 +52,7 @@
     display: inline-block;
     padding: .75rem 1.25rem;
     border-radius: 10rem;
-    color: #fff;
+    color: var(--base-color);
     text-transform: uppercase;
     font-size: 1rem;
     letter-spacing: .15rem;
@@ -84,7 +84,7 @@
         z-index: -1;
     }
     &:hover {
-        color: #fff;
+        color: var(--base-color);
         &:before {
             width: 100%;
         }
