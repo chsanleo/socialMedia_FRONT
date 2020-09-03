@@ -186,7 +186,7 @@ class DetailEvent extends React.Component {
                         </div>
                     </div>
                     <MesssageList profile={this.profile} readOnly />
-                    <h3>Add a message!</h3>
+                    <h3 align="center">Add a message!</h3>
                     <CreateMessage setText={this.setText} readOnly />
                 </div>
             </div>
