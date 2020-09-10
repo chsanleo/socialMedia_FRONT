@@ -155,7 +155,7 @@ class Profile extends React.Component {
                     <div className="buttonUpload">
                     <button type="submit">Update profile!</button>
                     </div><br />
-                    <NavLink to="/forgotPass">Change my password</NavLink>
+                    <NavLink to="/forgotPass">Change my password</NavLink>&nbsp;&nbsp;&nbsp;
                     <NavLink to="/init">Return to home</NavLink>
                 </form>
             </div>
