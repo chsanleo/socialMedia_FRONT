@@ -2,18 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import NavLeft from '../../components/navLeft/navLeft.jsx';
+import { friendService } from '../../services/friendService.js';
 
 class ProfileExt extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {showFriend:true}
     }
 
     componentDidMount() {
         if (this.props.user.id === undefined) { this.props.history.push('/'); }
     }
+    isFriend(){
 
+        return(<img className="linkImg" src="./join.png" onClick={this.friendRequest} alt="friendRequest" />);
+    }
+    friendRequest(){
+
+        let friendRequest ={
+            idFriendFrom: this.props.user.id,
+            idFriendTo: this.props.userExt.id
+        };
+
+        friendService.askFriendShip(friendRequest);
+    }
     render() {
         return (
             <div>
@@ -32,7 +45,7 @@ class ProfileExt extends React.Component {
                                 width="200px"
                                 alt="eventPhoto" />
                             <p><label>Friends: </label>&nbsp;{this.props.userExt.numFriends}</p>
-                            {/*friends*/}
+                            {this.isFriend()}
                         </div>
                         <div>
                             <p><label>Username: </label>&nbsp;{this.props.userExt.username}</p>
